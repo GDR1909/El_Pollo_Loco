@@ -30,6 +30,15 @@ class MoveableObject {
     }
 
 
+    playAnimation(images) {
+        let i = this.currentImage % this.IMAGES_WALKING.length; // % (ausgesprochen: Modulu) Das ist der mathematische Rest // let i = 7 % 6; => 1, Rest 1
+        // i = 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, ...
+        let path = images[i];
+        this.img = this.imageCache[path];
+        this.currentImage++;
+    }
+
+
     moveRight() {
         console.log('Moving right!');
     }
