@@ -57,13 +57,17 @@ class MoveableObject {
 
 
     moveRight() {
-        console.log('Moving right!');
+        this.x += this.speed;
+
     }
 
 
     moveLeft() {
-        setInterval(() => {
-            this.x -= this.speed;
-        }, 1000 / 60);
+        this.x -= this.speed;
+    }
+
+
+    jump() {
+        this.speedY = 30;
     }
 }
