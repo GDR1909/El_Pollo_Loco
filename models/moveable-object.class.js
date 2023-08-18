@@ -11,6 +11,7 @@ class MoveableObject {
     speedY = 0;
     acceleration = 2.5;
     energy = 100;
+    lastHit = 0;
 
 
     applyGravity() {
@@ -60,6 +61,28 @@ class MoveableObject {
     }
 
 
+    hit() {
+        this.energy -= 5;
+        if (this.energy < 0) {
+            this.energy = 0;
+        } else {
+            this.lastHit = new Date().getTime();
+        }
+    }
+
+
+    isHurt() {
+        let timepassed = new Date().getTime() - this.lastHit; //Differenz in Millisekunden
+        timepassed = timepassed / 1000; //Differenz in Sekunden
+        return  timepassed < 1;
+    }
+
+
+    isDead() {
+        return  this.energy == 0;
+    }
+
+
     /**
      * 
      * @param {Array} arr - ['img/image1.png', 'img/image2.png', ...]
@@ -74,7 +97,7 @@ class MoveableObject {
 
 
     playAnimation(images) {
-        let i = this.currentImage % this.IMAGES_WALKING.length; // % (ausgesprochen: Modulu) Das ist der mathematische Rest // let i = 7 % 6; => 1, Rest 1
+        let i = this.currentImage % images.length; // % (ausgesprochen: Modulu) Das ist der mathematische Rest // let i = 7 % 6; => 1, Rest 1
         // i = 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, ...
         let path = images[i];
         this.img = this.imageCache[path];
