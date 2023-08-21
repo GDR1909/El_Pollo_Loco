@@ -18,16 +18,20 @@ class MoveableObject extends DrawableObject {
 
 
     isAboveGround() {
-        return this.y < 150
+        if (this instanceof ThrowableObject) { //Throwable objects should always fall
+            return true;
+        } else {
+            return this.y < 150
+        }
     }
 
 
     // character.isColliding(chicken);
     isColliding(mo) {
-        return  this.x + this.width > mo.x &&
-                this.y + this.height > mo.y &&
-                this.x < mo.x &&
-                this.y < mo.y + mo.height;
+        return this.x + this.width > mo.x &&
+            this.y + this.height > mo.y &&
+            this.x < mo.x &&
+            this.y < mo.y + mo.height;
     }
 
 
@@ -44,12 +48,12 @@ class MoveableObject extends DrawableObject {
     isHurt() {
         let timepassed = new Date().getTime() - this.lastHit; //Differenz in Millisekunden
         timepassed = timepassed / 1000; //Differenz in Sekunden
-        return  timepassed < 1;
+        return timepassed < 1;
     }
 
 
     isDead() {
-        return  this.energy == 0;
+        return this.energy == 0;
     }
 
 
