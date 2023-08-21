@@ -8,6 +8,8 @@
 
     <link rel="icon" type="image/x-icon" href="img/4_enemie_boss_chicken/3_attack/G18.png">
     <link rel="stylesheet" href="style.css">
+    <script src="js/start.js"></script>
+    <script src="js/showStory.js"></script>
     <script src="models/drawable-object.class.js"></script>
     <script src="models/status-bar-health.class.js"></script>
     <script src="models/status-bar-bottle.class.js"></script>
@@ -30,11 +32,21 @@
 </head>
 
 <body onload="init()">
-    <h1>El Pollo Loco</h1>
+    <h1 id="h1" class="v-hidden">El Pollo Loco</h1>
 
-    <canvas id="canvas" width="720" height="480">
+    <canvas id="canvas" class="d-none" width="720" height="480">
 
     </canvas>
+
+    <div class="startScreen" id="startScreen">
+        <button onclick="start()">Start</button>
+        <button onclick="showSettings()">Settings</button>
+        <button onclick="showStory()">Story</button>
+    </div>
+
+    <div class="endScreen d-none" id="endScreen">
+
+    </div>
 </body>
 
 </html>
