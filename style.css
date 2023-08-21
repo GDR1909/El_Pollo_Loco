@@ -1,9 +1,31 @@
+@font-face {
+    font-family: 'zabras';
+    src: url('fonts/zabars.ttf') format('truetype');
+}
+
 body {
+    margin: 0;
+    font-family: 'zabras', Arial, Helvetica, sans-serif;
+    color: #3e1503;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    background-image: url('img/bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+h1 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 50px;
+    letter-spacing: 5px;
+    text-shadow: 4px, 4px, 8px rgba(0, 0, 0, 0.5);
 }
 
 canvas {
     background-color: black;
+    box-shadow: 0 0 5px 5px #3e1503;
 }
