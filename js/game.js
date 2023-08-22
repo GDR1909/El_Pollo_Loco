@@ -63,3 +63,39 @@ window.addEventListener("keyup", (e) => {
         keyboard.D = false;
     }
 })
+
+
+function start() {
+    document.getElementById('startScreen').classList.remove('startScreen');
+    document.getElementById('startScreen').classList.add('d-none');
+    document.getElementById('h1').classList.remove('v-hidden');
+    document.getElementById('canvas').classList.remove('d-none');
+}
+
+
+function showSettings() {
+    document.getElementById('settingsContainer').classList.remove('d-none');
+    document.getElementById('settingsContainer').classList.add('settingsAndStoryContainer');
+}
+
+
+function showStory() {
+    document.getElementById('storyContainer').classList.remove('d-none');
+    document.getElementById('storyContainer').classList.add('settingsAndStoryContainer');
+}
+
+
+function turnSoundOnOff(imagePath) {
+    document.getElementById('sound').src = imagePath;
+    if (imagePath == 'img/sound-off.png') {
+        document.getElementById('sound').setAttribute("onClick", "turnSoundOnOff('img/sound-on.png')");
+    } else {
+        document.getElementById('sound').setAttribute("onClick", "turnSoundOnOff('img/sound-off.png')");
+    }
+}
+
+
+function back(sc) {
+    document.getElementById(sc).classList.remove('settingsAndStoryContainer');
+    document.getElementById(sc).classList.add('d-none');
+}

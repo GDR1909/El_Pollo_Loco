@@ -8,8 +8,6 @@
 
     <link rel="icon" type="image/x-icon" href="img/4_enemie_boss_chicken/3_attack/G18.png">
     <link rel="stylesheet" href="style.css">
-    <script src="js/start.js"></script>
-    <script src="js/showStory.js"></script>
     <script src="models/drawable-object.class.js"></script>
     <script src="models/status-bar-health.class.js"></script>
     <script src="models/status-bar-bottle.class.js"></script>
@@ -42,6 +40,55 @@
         <button onclick="start()">Start</button>
         <button onclick="showSettings()">Settings</button>
         <button onclick="showStory()">Story</button>
+
+        <div id="settingsContainer" class="d-none">
+            <div class="backIcon">
+                <img src="img/left-arrow.png" onclick="back('settingsContainer')">
+            </div>
+
+            <table>
+                <tr>
+                    <td><img src="img/right-arrow-button.png"></td>
+                    <td>Move right</td>
+                </tr>
+
+                <tr>
+                    <td><img src="img/left-arrow-button.png"></td>
+                    <td>Move left</td>
+                </tr>
+
+                <tr>
+                    <td><img src="img/space-button.png"></td>
+                    <td>Jump</td>
+                </tr>
+
+                <tr>
+                    <td><img src="img/d-button.png"></td>
+                    <td>Throw bottle</td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <img src="img/sound-on.png" id="sound" class="sound" onclick="turnSoundOnOff('img/sound-off.png')">
+                    </td>
+                    <td>Turn sound on/off</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div id="storyContainer" class="d-none">
+            <div class="backIcon">
+                <img src="img/left-arrow.png" onclick="back('storyContainer')">
+            </div>
+
+            <span>
+                In the Mexican desert, Pepe Peligroso, a brave adventurer, faced off against crazed chickens. Armed with
+                a chili pepper sword, he battled fiercely, and a salsa bottle reinvigorated him. Collecting scattered
+                coins added to his points. With each triumph, Pepe's reputation as a fearless desert warrior grew. His
+                adventure continued, fueled by determination and a touch of salsa, as he forged his legend in the sands.
+            </span>
+        </div>
     </div>
 
     <div class="endScreen d-none" id="endScreen">

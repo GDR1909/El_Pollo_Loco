@@ -68,21 +68,42 @@ body {
     overflow-y: auto;
 }
 
-.settingsAndStoryContainer img {
+.backIcon {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.backIcon img {
+    height: 35px;
+    width: 35px;
+    margin: 20px;
     cursor: pointer;
-    position: relative;
-    right: 380px;
-    top: -80px;
     transition: all ease-in-out 125ms;
 }
 
-.settingsAndStoryContainer img:hover {
+.backIcon img:hover {
     transform: scale(1.1);
     transition: all ease-in-out 125ms;
 }
 
 .settingsAndStoryContainer span {
     padding: 10px 20px 10px 20px;
+}
+
+table img {
+    height: 50px;
+    margin: 10px 70px 10px 10px;
+}
+
+.sound {
+    cursor: pointer;
+    transition: all ease-in-out 125ms;
+}
+
+.sound:hover {
+    transform: scale(1.1);
+    transition: all ease-in-out 125ms;
 }
 
 h1 {
