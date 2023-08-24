@@ -1,6 +1,8 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let music = new Audio('audio/music.mp3');
+music.loop = true;
 
 
 function init() {
@@ -66,6 +68,9 @@ window.addEventListener("keyup", (e) => {
 
 
 function start() {
+    music.play();
+    initLevel();
+    init();
     document.getElementById('startScreen').classList.remove('startScreen');
     document.getElementById('startScreen').classList.add('d-none');
     document.getElementById('h1').classList.remove('v-hidden');
@@ -89,8 +94,10 @@ function turnSoundOnOff(imagePath) {
     document.getElementById('sound').src = imagePath;
     if (imagePath == 'img/sound-off.png') {
         document.getElementById('sound').setAttribute("onClick", "turnSoundOnOff('img/sound-on.png')");
+        music.pause();
     } else {
         document.getElementById('sound').setAttribute("onClick", "turnSoundOnOff('img/sound-off.png')");
+        music.play();
     }
 }
 

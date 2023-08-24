@@ -29,7 +29,7 @@
     <script src="js/game.js"></script>
 </head>
 
-<body onload="init()">
+<body>
     <h1 id="h1" class="v-hidden">El Pollo Loco</h1>
 
     <canvas id="canvas" class="d-none" width="720" height="480">
@@ -68,9 +68,7 @@
                 </tr>
 
                 <tr>
-                    <td>
-                        <img src="img/sound-on.png" id="sound" class="sound" onclick="turnSoundOnOff('img/sound-off.png')">
-                    </td>
+                    <td><img src="img/sound-off.png" id="sound" class="sound" onclick="turnSoundOnOff('img/sound-on.png')"></td>
                     <td>Turn sound on/off</td>
                 </tr>
             </table>

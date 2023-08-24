@@ -91,9 +91,17 @@ body {
     padding: 10px 20px 10px 20px;
 }
 
+table {
+    border-collapse: collapse;
+}
+
 table img {
     height: 50px;
     margin: 10px 70px 10px 10px;
+}
+
+tr:nth-child(5) {
+    border-top: 3px solid #3e1503;;
 }
 
 .sound {
@@ -102,7 +110,7 @@ table img {
 }
 
 .sound:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
     transition: all ease-in-out 125ms;
 }
 
