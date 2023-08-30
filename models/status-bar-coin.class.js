@@ -7,7 +7,8 @@ class StatusBarCoin extends DrawableObject {
         'img/7_statusbars/1_statusbar/1_statusbar_coin/green/80.png',
         'img/7_statusbars/1_statusbar/1_statusbar_coin/green/100.png',
     ];
-    percentage = 100;
+    percentage = 0;
+    coinAmount = 0;
 
 
     constructor() {
@@ -17,7 +18,16 @@ class StatusBarCoin extends DrawableObject {
         this.y = 80;
         this.width = 200;
         this.height = 50;
+        this.collectCoin();
         this.setPercentage(0);
+    }
+
+
+    collectCoin() {
+        this.coinAmount += 20;
+        if (this.coinAmount > 100) {
+            this.coinAmount = 100;
+        }
     }
 
 

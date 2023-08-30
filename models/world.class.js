@@ -9,6 +9,7 @@ class World {
     statusBarBottle = new StatusBarBottle();
     statusBarCoin = new StatusBarCoin();
     ThrowableObjects = [];
+    collecting_coin_sound = new Audio('audio/coin.mp3');
 
 
     constructor(canvas, keyboard) {
@@ -39,6 +40,13 @@ class World {
             if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy);
+            }
+        });
+
+        this.level.coins.forEach((coin) => {
+            if (this.character.isColliding(coin)) {
+                this.collecting_coin_sound.play();
+                this.statusBarCoin.setPercentage(this.statusBarCoin.coinAmount);
             }
         });
     }
