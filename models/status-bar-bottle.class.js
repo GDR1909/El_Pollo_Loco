@@ -7,7 +7,8 @@ class StatusBarBottle extends DrawableObject {
         'img/7_statusbars/1_statusbar/3_statusbar_bottle/green/80.png',
         'img/7_statusbars/1_statusbar/3_statusbar_bottle/green/100.png'
     ];
-    percentage = 100;
+    percentage = 0;
+    bottleAmount = 0;
 
 
     constructor() {
@@ -18,6 +19,14 @@ class StatusBarBottle extends DrawableObject {
         this.width = 200;
         this.height = 50;
         this.setPercentage(0);
+    }
+
+
+    collectBottle() {
+        this.bottleAmount += 20;
+        if (this.bottleAmount > 100) {
+            this.bottleAmount = 100;
+        }
     }
 
 

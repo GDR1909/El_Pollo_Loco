@@ -10,6 +10,7 @@ class World {
     statusBarCoin = new StatusBarCoin();
     ThrowableObjects = [];
     collecting_coin_sound = new Audio('audio/coin.mp3');
+    collecting_bottle_sound = new Audio('audio/bottle.mp3');
 
 
     constructor(canvas, keyboard) {
@@ -43,13 +44,35 @@ class World {
             }
         });
 
-        this.level.coins.forEach((coin) => {
+        this.level.coins = this.level.coins.filter((coin) => {
             if (this.character.isColliding(coin)) {
                 this.collecting_coin_sound.play();
                 this.statusBarCoin.setPercentage(this.statusBarCoin.coinAmount);
                 this.statusBarCoin.collectCoin();
+                return false;
             }
+            return true;
         });
+
+        this.level.bottles = this.level.bottles.filter((bottle) => {
+            if (this.character.isColliding(bottle)) {
+                this.collecting_bottle_sound.play();
+                this.statusBarBottle.setPercentage(this.statusBarBottle.bottleAmount);
+                this.statusBarBottle.collectBottle();
+                return false;
+            }
+            return true;
+        });
+        
+
+        // this.level.coins.forEach((coin) => {
+        //     if (this.character.isColliding(coin)) {
+        //         this.collecting_coin_sound.play();
+        //         this.statusBarCoin.setPercentage(this.statusBarCoin.coinAmount);
+        //         this.statusBarCoin.collectCoin();
+        //         this.level.coins.splice(1);
+        //     }
+        // });
     }
 
 
