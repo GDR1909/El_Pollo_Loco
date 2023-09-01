@@ -47,6 +47,7 @@ class World {
             if (this.character.isColliding(coin)) {
                 this.collecting_coin_sound.play();
                 this.statusBarCoin.setPercentage(this.statusBarCoin.coinAmount);
+                this.statusBarCoin.collectCoin();
             }
         });
     }
