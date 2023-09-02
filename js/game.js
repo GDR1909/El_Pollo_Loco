@@ -1,8 +1,8 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
-let music = new Audio('audio/music.mp3');
-music.loop = true;
+// let music = new Audio('audio/music.mp3');
+// music.loop = true;
 
 
 function init() {
@@ -68,7 +68,7 @@ window.addEventListener("keyup", (e) => {
 
 
 function start() {
-    music.play();
+    // music.play();
     initLevel();
     init();
     document.getElementById('startScreen').classList.remove('startScreen');
