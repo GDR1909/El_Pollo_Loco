@@ -61,7 +61,6 @@ function initLevel() {
             new Coin('img/8_coin/coin_1.png'),
             new Coin('img/8_coin/coin_1.png'),
             new Coin('img/8_coin/coin_1.png'),
-            new Coin('img/8_coin/coin_1.png'),
             new Coin('img/8_coin/coin_1.png')
         ]
     );
