@@ -13,6 +13,7 @@ class ThrowableObject extends MoveableObject {
         'img/6_salsa_bottle/bottle_rotation/bottle_splash/5_bottle_splash.png',
         'img/6_salsa_bottle/bottle_rotation/bottle_splash/6_bottle_splash.png'
     ];
+    bottle_splash_sound = new Audio('audio/bottleSplash.mp3');
 
 
     constructor(x, y) {
@@ -40,14 +41,19 @@ class ThrowableObject extends MoveableObject {
     animate() {
         setInterval(() => {
             this.playAnimation(this.IMAGES_FLYING_BOTTLE);
+            if (this.y > 250) {
+                setTimeout(() => {
+                    this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);
+                }, 0);
+            }
         }, 50);
     }
 
 
-    bottleSplash() {
-        setInterval(() => {
-            this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);
-        }, 50);
+    // bottleSplash() {
+    //     setInterval(() => {
+    //         this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);
+    //     }, 50);
 
-    }
+    // }
 }
