@@ -39,21 +39,18 @@ class ThrowableObject extends MoveableObject {
 
 
     animate() {
+        let bottleSplashSoundPlayed = false;
+
         setInterval(() => {
             this.playAnimation(this.IMAGES_FLYING_BOTTLE);
-            if (this.y > 250) {
+            if (this.y > 250 && !bottleSplashSoundPlayed) {
                 setTimeout(() => {
                     this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);
+                    console.log(this.IMAGAES_BOTTLE_SPLASH);
+                    this.bottle_splash_sound.play();
+                    bottleSplashSoundPlayed = true;
                 }, 0);
             }
         }, 50);
     }
-
-
-    // bottleSplash() {
-    //     setInterval(() => {
-    //         this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);
-    //     }, 50);
-
-    // }
 }
