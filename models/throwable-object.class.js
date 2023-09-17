@@ -43,14 +43,27 @@ class ThrowableObject extends MoveableObject {
 
         setInterval(() => {
             this.playAnimation(this.IMAGES_FLYING_BOTTLE);
-            if (this.y > 250 && !bottleSplashSoundPlayed) {
-                setTimeout(() => {
-                    this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);
-                    console.log(this.IMAGAES_BOTTLE_SPLASH);
-                    this.bottle_splash_sound.play();
-                    bottleSplashSoundPlayed = true;
-                }, 0);
-            }
-        }, 50);
+        }, 70);
+
+        if (this.y > 250 && !bottleSplashSoundPlayed) {
+            setTimeout(() => {
+                this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);
+                console.log(this.IMAGAES_BOTTLE_SPLASH);
+                this.bottle_splash_sound.play();
+                bottleSplashSoundPlayed = true;
+            }, 500);
+        }
     }
+
+
+    // bottleSplashAnimation() {
+    //     let bottleSplashSoundPlayed = false;
+    //     if (this.y > 270 && !bottleSplashSoundPlayed) {
+    //         setTimeout(() => {
+    //             this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);
+    //             this.bottle_splash_sound.play();
+    //             bottleSplashSoundPlayed = true;
+    //         }, 0);
+    //     }
+    // }
 }
