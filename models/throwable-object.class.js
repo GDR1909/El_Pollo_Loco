@@ -1,4 +1,6 @@
 class ThrowableObject extends MoveableObject {
+    hitted = false;
+
     IMAGES_FLYING_BOTTLE = [
         'img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png',
         'img/6_salsa_bottle/bottle_rotation/2_bottle_rotation.png',
@@ -42,17 +44,18 @@ class ThrowableObject extends MoveableObject {
         let bottleSplashSoundPlayed = false;
 
         setInterval(() => {
-            this.playAnimation(this.IMAGES_FLYING_BOTTLE);
+            if ((this.y > 360 && !bottleSplashSoundPlayed) || this.hitted) {
+                setTimeout(() => {
+                    this.speedY = 0;
+                    this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);
+                    console.log(this.IMAGAES_BOTTLE_SPLASH);
+                    this.bottle_splash_sound.play();
+                    bottleSplashSoundPlayed = true;
+                }, 10);
+            } else {
+                this.playAnimation(this.IMAGES_FLYING_BOTTLE);
+            }
         }, 70);
-
-        if (this.y > 250 && !bottleSplashSoundPlayed) {
-            setTimeout(() => {
-                this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);
-                console.log(this.IMAGAES_BOTTLE_SPLASH);
-                this.bottle_splash_sound.play();
-                bottleSplashSoundPlayed = true;
-            }, 500);
-        }
     }
 
 
