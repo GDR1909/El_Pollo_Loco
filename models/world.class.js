@@ -21,6 +21,14 @@ class World {
         this.draw();
         this.setWorld();
         this.run();
+        this.updateThrowableObjects();
+    }
+
+
+    updateThrowableObjects(){
+        setInterval(() => {
+            this.ThrowableObjects = this.ThrowableObjects.filter(to => !to.removed);
+        }, 100);
     }
 
 
