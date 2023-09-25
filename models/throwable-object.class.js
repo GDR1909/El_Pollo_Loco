@@ -48,11 +48,10 @@ class ThrowableObject extends MoveableObject {
         let bottleSplashSoundPlayed = false;
 
         setInterval(() => {
-            if ((this.y > 360 && !bottleSplashSoundPlayed) || this.hitted) {
+            if ((this.y > 360 && !bottleSplashSoundPlayed) || this.hitted == true) {
                 setTimeout(() => {
                     this.speedY = 0;
                     this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);
-                    console.log(this.IMAGAES_BOTTLE_SPLASH);
                     this.bottle_splash_sound.play();
                     bottleSplashSoundPlayed = true;
                 }, 10);

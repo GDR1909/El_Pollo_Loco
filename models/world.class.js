@@ -83,10 +83,16 @@ class World {
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
             this.ThrowableObjects.push(bottle);
             this.collectedBottles.splice(0, 1);
-            console.log(this.collectedBottles);
             this.statusBarBottle.removeBottle();
-            console.log(this.statusBarBottle.bottleAmount);
             this.statusBarBottle.setPercentage(this.statusBarBottle.bottleAmount);
+            this.checkIfFlyingBottleHitsEnemy(bottle);
+        }
+    }
+    
+    
+    checkIfFlyingBottleHitsEnemy(bottle) {
+        if (bottle.isColliding(this.level.enemies)) {
+            this.bottle.hitted = true;
         }
     }
 

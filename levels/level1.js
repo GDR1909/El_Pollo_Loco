@@ -4,12 +4,12 @@ let level1;
 function initLevel() {
     level1 = new Level(
         [
+            new Chicken(),
             // new Chicken(),
             // new Chicken(),
             // new Chicken(),
             // new Chicken(),
-            // new Chicken(),
-            // new SmallChicken(),
+            new SmallChicken(),
             // new SmallChicken(),
             // new SmallChicken(),
             // new SmallChicken(),
@@ -57,11 +57,11 @@ function initLevel() {
         ],
 
         [
-            new Coin('img/8_coin/coin_1.png'),
-            new Coin('img/8_coin/coin_1.png'),
-            new Coin('img/8_coin/coin_1.png'),
-            new Coin('img/8_coin/coin_1.png'),
-            new Coin('img/8_coin/coin_1.png')
+            // new Coin('img/8_coin/coin_1.png'),
+            // new Coin('img/8_coin/coin_1.png'),
+            // new Coin('img/8_coin/coin_1.png'),
+            // new Coin('img/8_coin/coin_1.png'),
+            // new Coin('img/8_coin/coin_1.png')
         ]
     );
 }
