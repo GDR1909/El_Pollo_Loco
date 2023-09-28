@@ -91,9 +91,18 @@ class World {
     
     
     checkIfFlyingBottleHitsEnemy(bottle) {
-        if (bottle.isColliding(this.level.enemies)) {
-            this.bottle.hitted = true;
-        }
+        // if (bottle.isColliding(this.level.enemies)) {
+        //     ThrowableObject.hitted = true;
+        //     console.log('Enemy hitted with flying bottle!');
+        // }
+
+
+        this.level.enemies.forEach(enemy => {
+            if (bottle.isColliding(enemy)) {
+            ThrowableObject.hitted = true;
+            console.log('Enemy hitted with flying bottle!');
+            }
+        });
     }
 
 
