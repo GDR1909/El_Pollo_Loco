@@ -25,7 +25,7 @@ class World {
     }
 
 
-    updateThrowableObjects(){
+    updateThrowableObjects() {
         setInterval(() => {
             this.ThrowableObjects = this.ThrowableObjects.filter(to => !to.removed);
         }, 100);
@@ -85,23 +85,20 @@ class World {
             this.collectedBottles.splice(0, 1);
             this.statusBarBottle.removeBottle();
             this.statusBarBottle.setPercentage(this.statusBarBottle.bottleAmount);
-            this.checkIfFlyingBottleHitsEnemy(bottle);
         }
+        this.checkIfFlyingBottleHitsEnemy();
     }
-    
-    
-    checkIfFlyingBottleHitsEnemy(bottle) {
-        // if (bottle.isColliding(this.level.enemies)) {
-        //     ThrowableObject.hitted = true;
-        //     console.log('Enemy hitted with flying bottle!');
-        // }
 
 
-        this.level.enemies.forEach(enemy => {
-            if (bottle.isColliding(enemy)) {
-            ThrowableObject.hitted = true;
-            console.log('Enemy hitted with flying bottle!');
-            }
+    checkIfFlyingBottleHitsEnemy() {
+        this.ThrowableObjects.forEach(bottle => {
+            this.level.enemies.forEach(enemy => {
+                if (bottle.isColliding(enemy)) {
+                    bottle.hitted = true;
+                    console.log('Enemy hitted with flying bottle!');
+                    this.updateThrowableObjects();
+                }
+            });
         });
     }
 

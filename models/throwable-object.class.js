@@ -37,7 +37,7 @@ class ThrowableObject extends MoveableObject {
         this.applyGravity();
         setInterval(() => {
             this.x += 10;
-            if(this.y > 360) {
+            if(this.y > 360 || this.hitted) {
                 this.removed = true;
             }
         }, 25);
@@ -48,12 +48,14 @@ class ThrowableObject extends MoveableObject {
         let bottleSplashSoundPlayed = false;
 
         setInterval(() => {
-            if ((this.y > 360 && !bottleSplashSoundPlayed) || this.hitted == true) {
+            if ((this.y > 360 && !bottleSplashSoundPlayed) || this.hitted) {
+                console.log(this.hitted);
                 setTimeout(() => {
                     this.speedY = 0;
                     this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);
                     this.bottle_splash_sound.play();
                     bottleSplashSoundPlayed = true;
+                    this.hitted = false;
                 }, 10);
             } else {
                 this.playAnimation(this.IMAGES_FLYING_BOTTLE);
