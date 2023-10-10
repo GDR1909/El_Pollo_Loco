@@ -47,11 +47,11 @@ class World {
 
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
+            if (this.character.isAboveGround() && this.character.isColliding(enemy)) {
+                console.log(enemy, 'gets jumped on!');
+            } else if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy);
-            } else if (this.character.isAboveGround() && this.character.isColliding(enemy) && this.character.y + this.character.height < enemy.y) {
-                console.log('Enemy gets jumped on!');
             }
         });
 

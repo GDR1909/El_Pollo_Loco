@@ -1,4 +1,5 @@
 class Chicken extends MoveableObject {
+    dead = false;
     height = 60;
     width = 60;
     y = 360;
@@ -30,5 +31,11 @@ class Chicken extends MoveableObject {
         setInterval(() => {
             this.playAnimation(this.IMAGES_WALKING);
         }, 200);
+    }
+
+    deadChicken() {
+        if (dead = true) {
+            this.playAnimation(this.IMAGE_DEAD);
+        }
     }
 }
