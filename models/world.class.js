@@ -49,7 +49,7 @@ class World {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isAboveGround() && this.character.isColliding(enemy)) {
                 console.log(enemy, 'gets jumped on!');
-                enemy.deadChicken();
+                enemy.deadChicken(enemy);
             } else if (this.character.isColliding(enemy)) {
                 this.character.hit();
                 this.statusBarHealth.setPercentage(this.character.energy);
