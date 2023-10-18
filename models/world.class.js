@@ -12,6 +12,7 @@ class World {
     ThrowableObjects = [];
     collecting_coin_sound = new Audio('audio/coin.mp3');
     collecting_bottle_sound = new Audio('audio/bottle.mp3');
+    deadChickens = [];
 
 
     constructor(canvas, keyboard) {
@@ -45,16 +46,35 @@ class World {
     }
 
 
+    chickenToDelete(enemy) {
+        this.deadChickens.push(enemy);
+        this.deleteDeadChickens();
+    }
+
+
+    deleteDeadChickens() {
+        setTimeout(() => {
+            this.deadChickens = [];
+            this.level.enemies.splice(0, 1);
+        }, 750);
+    }
+
+
     checkCollisions() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isAboveGround() && this.character.isColliding(enemy)) {
-                console.log(enemy, 'gets jumped on!');
-                enemy.deadChicken(enemy);
-            } else if (this.character.isColliding(enemy)) {
-                this.character.hit();
-                this.statusBarHealth.setPercentage(this.character.energy);
+            if (!enemy.isDead() && this.character.isColliding(enemy)) {
+                if (this.character.isAboveGround()) {
+                    console.log(enemy, 'gets jumped on!');
+                    enemy.killChicken();
+                    this.chickenToDelete(enemy);
+                    this.character.smallJump();
+                } else {
+                    this.character.hit();
+                    this.statusBarHealth.setPercentage(this.character.energy);
+                }
             }
         });
+
 
         this.level.coins = this.level.coins.filter((coin) => {
             if (this.character.isColliding(coin)) {
