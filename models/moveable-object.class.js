@@ -11,7 +11,7 @@ class MoveableObject extends DrawableObject {
     //     bottom: 0,
     //     left: 0,
     //     right: 0
-    // }
+    // };
 
 
     applyGravity() {
@@ -96,5 +96,11 @@ class MoveableObject extends DrawableObject {
 
     smallJump() {
         this.speedY = 15;
+    }
+
+
+    killChicken() {
+        this.dead_sound.play();
+        this.energy = 0;
     }
 }

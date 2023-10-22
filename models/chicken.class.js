@@ -39,10 +39,4 @@ class Chicken extends MoveableObject {
             }
         }, 200);
     }
-
-
-    killChicken() {
-        this.dead_sound.play();
-        this.energy = 0;
-    }
 }

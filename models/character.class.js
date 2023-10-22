@@ -66,11 +66,11 @@ class Character extends MoveableObject {
     hurting_sound = new Audio('audio/hurt.mp3');
 
     // offset = {
-    //     top: 120,
+    //     top: 20,
     //     bottom: 30,
     //     left: 40,
     //     right: 30
-    // }
+    // };
 
 
     constructor() {
@@ -109,6 +109,7 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
+            this.idle_sound.pause();
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
             } else if (this.isHurt()) {
@@ -119,7 +120,10 @@ class Character extends MoveableObject {
             } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) { // Das "||" bedeutet in JavaScript bei einer if-Abfrage logisches "oder".
                 this.playAnimation(this.IMAGES_WALKING);
             } else {
-                this.isIdle();
+                setTimeout(() => {
+                    this.isIdle();
+                    this.idle_sound.play();
+                }, 500);
             }
         }, 100);
     }
