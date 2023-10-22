@@ -12,7 +12,6 @@ class World {
     ThrowableObjects = [];
     collecting_coin_sound = new Audio('audio/coin.mp3');
     collecting_bottle_sound = new Audio('audio/bottle.mp3');
-    deadChickens = [];
 
 
     constructor(canvas, keyboard) {
@@ -47,15 +46,8 @@ class World {
 
 
     chickenToDelete(enemy) {
-        this.deadChickens.push(enemy);
-        this.deleteDeadChickens();
-    }
-
-
-    deleteDeadChickens() {
         setTimeout(() => {
-            this.deadChickens = [];
-            this.level.enemies.splice(0, 1);
+            this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
         }, 750);
     }
 
