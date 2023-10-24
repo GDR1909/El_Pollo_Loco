@@ -123,7 +123,7 @@ class Character extends MoveableObject {
                 setTimeout(() => {
                     this.isIdle();
                     this.idle_sound.play();
-                }, 500);
+                }, 1000);
             }
         }, 100);
     }
