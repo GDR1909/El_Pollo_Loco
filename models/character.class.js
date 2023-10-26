@@ -2,7 +2,7 @@ class Character extends MoveableObject {
     height = 280;
     width = 120;
     y = 50;
-    speed = 5;
+    speed = 10;
     IMAGES_IDLE = [
         'img/2_character_pepe/1_idle/idle/I-1.png',
         'img/2_character_pepe/1_idle/idle/I-2.png',
@@ -60,7 +60,7 @@ class Character extends MoveableObject {
         'img/2_character_pepe/5_dead/D-57.png'
     ];
     world;
-    idle_sound = new Audio('audio/idle.mp3');
+    // idle_sound = new Audio('audio/idle.mp3');
     walking_sound = new Audio('audio/running.mp3');
     jumping_sound = new Audio('audio/jump.mp3');
     hurting_sound = new Audio('audio/hurt.mp3');
@@ -109,7 +109,7 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            this.idle_sound.pause();
+            // this.idle_sound.pause();
             if (this.isDead()) {
                 this.playAnimation(this.IMAGES_DEAD);
             } else if (this.isHurt()) {
@@ -122,7 +122,7 @@ class Character extends MoveableObject {
             } else {
                 setTimeout(() => {
                     this.isIdle();
-                    this.idle_sound.play();
+                    // this.idle_sound.play();
                 }, 1000);
             }
         }, 100);
