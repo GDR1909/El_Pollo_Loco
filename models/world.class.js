@@ -112,6 +112,7 @@ class World {
                     bottle.hitted = true;
                     console.log('Enemy hitted with flying bottle!');
                     this.updateThrowableObjects();
+                    enemy.hit();
                 }
             });
         });
