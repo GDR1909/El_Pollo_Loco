@@ -2,10 +2,12 @@ class Endboss extends MoveableObject {
     height = 400;
     width = 250;
     y = 55;
-    energy = 100;
+    energy = 20;
     speed = 3;
     hadFirstContact = false;
-    hurt_sound = new Audio('audio/endbossHurt.mp3');
+    endbossIsDead = false;
+    endbossHurt_sound = new Audio('audio/endbossHurt.mp3');
+    endbossDead_sound = new Audio('audio/endbossDead.mp3');
     IMAGES_WALKING = [
         'img/4_enemie_boss_chicken/1_walk/G1.png',
         'img/4_enemie_boss_chicken/1_walk/G2.png',
@@ -58,22 +60,35 @@ class Endboss extends MoveableObject {
 
     animate() {
         setInterval(() => {
-            if (this.isHurt()) {
-                this.playAnimation(this.IMAGES_HURT);
-                this.hurt_sound.play();
-            } else if (world.character.x > 2000 || this.hadFirstContact) { 
+            if (world.character.x > 2000 && !this.hadFirstContact) {
                 this.hadFirstContact = true;
-                this.playAnimation(this.IMAGES_WALKING);
+                console.log('first contact is:', this.hadFirstContact);
+            } else if (!this.isDead() && this.hadFirstContact) {
                 this.moveLeft();
+                this.speed = 3;
             }
         }, 150);
 
-        let deadAnimationInterval = setInterval(() => {
-            if (this.energy == 0) {
-                this.hurt_sound.pause();
-                this.playAnimation(this.IMAGES_DEAD);
-                clearInterval(deadAnimationInterval);
+        setInterval(() => {
+            if (this.isDead() && !this.endbossIsDead) {
+                this.endbossIsDead = true;
+                this.deadEndboss();
+            } else if (this.isHurt() && !this.endbossIsDead) {
+                this.playAnimation(this.IMAGES_HURT);
+                this.endbossHurt_sound.play();
+                this.speed = 0;
+            } else if (!this.endbossIsDead) {
+                this.playAnimation(this.IMAGES_WALKING);
             }
+        }, 150);
+    }
+
+
+    deadEndboss() {
+        let deadAnimationInterval = setInterval(() => {
+            this.endbossDead_sound.play();
+            this.playAnimation(this.IMAGES_DEAD);
+            clearInterval(deadAnimationInterval);
         }, 150);
     }
 }
