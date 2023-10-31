@@ -2,7 +2,7 @@ class Endboss extends MoveableObject {
     height = 400;
     width = 250;
     y = 55;
-    energy = 20;
+    energy = 100;
     speed = 3;
     hadFirstContact = false;
     endbossIsDead = false;
@@ -85,10 +85,13 @@ class Endboss extends MoveableObject {
 
 
     deadEndboss() {
-        let deadAnimationInterval = setInterval(() => {
+        setTimeout(() => {
             this.endbossDead_sound.play();
+        }, 150);
+    
+        setInterval(() => {
             this.playAnimation(this.IMAGES_DEAD);
-            clearInterval(deadAnimationInterval);
+            this.y += 20;
         }, 150);
     }
 }

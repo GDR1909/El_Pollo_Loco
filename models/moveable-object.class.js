@@ -103,4 +103,10 @@ class MoveableObject extends DrawableObject {
         this.dead_sound.play();
         this.energy = 0;
     }
+
+
+    fallThroughGround() {
+        this.speedY = this.acceleration;
+        this.y = 300;
+    }
 }
