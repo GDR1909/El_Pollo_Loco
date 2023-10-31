@@ -2,7 +2,8 @@ class Character extends MoveableObject {
     height = 280;
     width = 120;
     y = 50;
-    speed = 10;
+    speed = 5;
+    characterIsDead = false;
     IMAGES_IDLE = [
         'img/2_character_pepe/1_idle/idle/I-1.png',
         'img/2_character_pepe/1_idle/idle/I-2.png',
@@ -60,10 +61,11 @@ class Character extends MoveableObject {
         'img/2_character_pepe/5_dead/D-57.png'
     ];
     world;
-    // idle_sound = new Audio('audio/idle.mp3');
+    idle_sound = new Audio('audio/idle.mp3');
     walking_sound = new Audio('audio/running.mp3');
     jumping_sound = new Audio('audio/jump.mp3');
     hurting_sound = new Audio('audio/hurt.mp3');
+    characterDead_sound = new Audio('audio/characterDead.mp3');
 
     // offset = {
     //     top: 20,
@@ -109,12 +111,17 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            // this.idle_sound.pause();
-            if (this.isDead()) {
-                this.playAnimation(this.IMAGES_DEAD);
+            this.idle_sound.pause();
+            if (this.isDead() && !this.characterIsDead) {
+                this.characterIsDead = true;
+                this.characterDead();
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
                 this.hurting_sound.play();
+                this.speed = 2;
+                setTimeout(() => {
+                    this.speed = 5;
+                }, 1500);
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
             } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) { // Das "||" bedeutet in JavaScript bei einer if-Abfrage logisches "oder".
@@ -122,8 +129,7 @@ class Character extends MoveableObject {
             } else {
                 setTimeout(() => {
                     this.isIdle();
-                    // this.idle_sound.play();
-                }, 1000);
+                }, 2000);
             }
         }, 100);
     }
@@ -135,13 +141,22 @@ class Character extends MoveableObject {
         let space = this.world.keyboard.SPACE;
         let d = this.world.keyboard.D;
 
-        if (right == false && left == false && space == false && d == false) {
+        if (right == false && left == false && space == false && d == false && !this.characterIsDead) {
             this.playAnimation(this.IMAGES_IDLE);
+            this.idle_sound.play();
         }
     }
 
 
-    jump() {
-        this.speedY = 30;
+    characterDead() {
+        setTimeout(() => {
+            this.characterDead_sound.play();
+        }, 150);
+
+        setInterval(() => {
+            this.speed = 0;
+            this.playAnimation(this.IMAGES_DEAD);
+            this.y += 20;
+        }, 150);
     }
 }

@@ -41,10 +41,10 @@ class MoveableObject extends DrawableObject {
         //         this.y + this.offset.top < mo.y + mo.height - mo.offset.bottom;
 
 
-        return  this.x + this.width > mo.x &&
-                this.y + this.height > mo.y &&
-                this.x < mo.x + mo.width &&
-                this.y < mo.y + mo.height;
+        return this.x + this.width > mo.x &&
+            this.y + this.height > mo.y &&
+            this.x < mo.x + mo.width &&
+            this.y < mo.y + mo.height;
     }
 
 
@@ -102,11 +102,5 @@ class MoveableObject extends DrawableObject {
     killChicken() {
         this.dead_sound.play();
         this.energy = 0;
-    }
-
-
-    fallThroughGround() {
-        this.speedY = this.acceleration;
-        this.y = 300;
     }
 }
