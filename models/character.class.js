@@ -111,7 +111,7 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            this.idle_sound.pause();
+            // this.idle_sound.pause();
             if (this.isDead() && !this.characterIsDead) {
                 this.characterIsDead = true;
                 this.characterDead();
@@ -143,7 +143,7 @@ class Character extends MoveableObject {
 
         if (right == false && left == false && space == false && d == false && !this.characterIsDead) {
             this.playAnimation(this.IMAGES_IDLE);
-            this.idle_sound.play();
+            // this.idle_sound.play();
         }
     }
 

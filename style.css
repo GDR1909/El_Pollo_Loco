@@ -26,7 +26,8 @@ body {
 }
 
 .startScreen {
-    width: 850px;
+    width: 100%;
+    max-width: 850px;
     height: 480px;
     background-image: url('img/9_intro_outro_screens/start/startscreen_1.png');
     background-size: cover;
@@ -34,7 +35,7 @@ body {
     box-shadow: 0 0 5px 5px #3e1503;
     display: flex;
     justify-content: center;
-    align-items: end;
+    align-items: flex-end;
 }
 
 .startScreen button {
