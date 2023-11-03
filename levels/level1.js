@@ -4,7 +4,7 @@ let level1;
 function initLevel() {
     level1 = new Level(
         [
-            new Chicken(),
+            // new Chicken(),
             // new Chicken(),
             // new Chicken(),
             // new Chicken(),
@@ -49,11 +49,11 @@ function initLevel() {
         ],
 
         [
-            // new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
-            // new Bottle('img/6_salsa_bottle/2_salsa_bottle_on_ground.png'),
-            // new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
-            // new Bottle('img/6_salsa_bottle/2_salsa_bottle_on_ground.png'),
-            // new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png')
+            new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+            new Bottle('img/6_salsa_bottle/2_salsa_bottle_on_ground.png'),
+            new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+            new Bottle('img/6_salsa_bottle/2_salsa_bottle_on_ground.png'),
+            new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png')
         ],
 
         [

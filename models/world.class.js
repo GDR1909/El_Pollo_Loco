@@ -8,6 +8,7 @@ class World {
     statusBarHealth = new StatusBarHealth();
     statusBarBottle = new StatusBarBottle();
     statusBarCoin = new StatusBarCoin();
+    statusBarEndboss = new StatusBarEndboss();
     collectedBottles = [];
     ThrowableObjects = [];
     collecting_coin_sound = new Audio('audio/coin.mp3');
@@ -113,6 +114,7 @@ class World {
                     console.log('Enemy hitted with flying bottle!');
                     this.updateThrowableObjects();
                     enemy.hit();
+                    this.statusBarEndboss.setPercentage(enemy.energy);
                 }
             });
         });
@@ -130,6 +132,7 @@ class World {
         this.addToMap(this.statusBarHealth);
         this.addToMap(this.statusBarBottle);
         this.addToMap(this.statusBarCoin);
+        this.addToMap(this.statusBarEndboss);
         this.ctx.translate(this.camera_x, 0);
 
         this.addToMap(this.character);
