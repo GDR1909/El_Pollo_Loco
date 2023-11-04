@@ -68,7 +68,8 @@
                 </tr>
 
                 <tr>
-                    <td><img src="img/sound-off.png" id="sound" class="sound" onclick="turnSoundOnOff('img/sound-on.png')"></td>
+                    <td><img src="img/sound-off.png" id="sound" class="sound"
+                            onclick="turnSoundOnOff('img/sound-on.png')"></td>
                     <td>Turn sound on/off</td>
                 </tr>
             </table>
@@ -89,8 +90,12 @@
         </div>
     </div>
 
-    <div class="endScreen d-none" id="endScreen">
+    <div class="d-none" id="youLostScreen">
+        <button onclick="start()">Restart</button>
+    </div>
 
+    <div class="d-none" id="gameOverScreen">
+        <button onclick="start()">Restart</button>
     </div>
 </body>
 

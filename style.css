@@ -127,7 +127,74 @@ canvas {
     background-color: black;
     box-shadow: 0 0 5px 5px #3e1503;
     display: block;
+    position: relative;
 }
+
+.youLostScreen {
+    background-image: url('img/9_intro_outro_screens/game_over/you lost.png');
+    width: 100%;
+    max-width: 720px;
+    height: 100%;
+    max-height: 480px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: absolute;
+    top: 135px;
+    animation: fadeIn 2s;
+}
+
+.youLostScreen button {
+    font-family: 'zabras', Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    background-color: #FFC200;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: pointer;
+    transition: all ease-in-out 125ms;
+}
+
+.youLostScreen button:hover {
+    background-color: #FF9900;
+    transition: all ease-in-out 125ms;
+}
+
+.gameOverScreen {
+    background-image: url('img/9_intro_outro_screens/game_over/game over.png');
+    width: 720px;
+    height: 480px;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.gameOverScreen button {
+    font-family: 'zabras', Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    background-color: #FFC200;
+    width: 100px;
+    height: 40px;
+    border-radius: 10px;
+    margin: 5px;
+    cursor: pointer;
+    transition: all ease-in-out 125ms;
+}
+
+.gameOverScreen button:hover {
+    background-color: #FF9900;
+    transition: all ease-in-out 125ms;
+}
+
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 
 /* Smartphones ---------- */
 @media only screen and (max-width: 720px) {
