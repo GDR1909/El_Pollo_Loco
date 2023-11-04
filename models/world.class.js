@@ -9,6 +9,7 @@ class World {
     statusBarBottle = new StatusBarBottle();
     statusBarCoin = new StatusBarCoin();
     statusBarEndboss = new StatusBarEndboss();
+    ICON_HEALTH_ENDBOSS = new IconHealthEndboss();
     collectedBottles = [];
     ThrowableObjects = [];
     collecting_coin_sound = new Audio('audio/coin.mp3');
@@ -133,6 +134,7 @@ class World {
         this.addToMap(this.statusBarBottle);
         this.addToMap(this.statusBarCoin);
         this.addToMap(this.statusBarEndboss);
+        this.addToMap(this.ICON_HEALTH_ENDBOSS);
         this.ctx.translate(this.camera_x, 0);
 
         this.addToMap(this.character);

@@ -7,7 +7,7 @@ class StatusBarEndboss extends DrawableObject {
         'img/7_statusbars/1_statusbar/2_statusbar_health/green/80.png',
         'img/7_statusbars/1_statusbar/2_statusbar_health/green/100.png'
     ];
-    ICON_HEALTH_ENDBOSS = new Image('img/7_statusbars/3_icons/icon_health_endboss.png');
+    // ICON_HEALTH_ENDBOSS = new Image('img/7_statusbars/3_icons/icon_health_endboss.png');
     percentage = 100;
 
 
@@ -22,15 +22,15 @@ class StatusBarEndboss extends DrawableObject {
     }
 
 
-    draw(ctx) {
-        try {
-            ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-            ctx.drawImage(this.ICON_HEALTH_ENDBOSS, this.x, this.y, this.width, this.height);
-        } catch (e) {
-            console.warn('Error loading image:', e);
-            console.log('Could not load image:', this.img.src);
-        }
-    }
+    // draw(ctx) {
+    //     try {
+    //         ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
+    //         ctx.drawImage(this.ICON_HEALTH_ENDBOSS, this.x, this.y, this.width, this.height);
+    //     } catch (e) {
+    //         console.warn('Error loading image:', e);
+    //         console.log('Could not load image:', this.img.src);
+    //     }
+    // }
 
 
     //Bsp: setPercentage(50);
