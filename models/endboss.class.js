@@ -4,7 +4,7 @@ class Endboss extends MoveableObject {
     y = 55;
     energy = 100;
     speed = 3;
-    hadFirstContact = false;
+    // hadFirstContact = false;
     endbossIsDead = false;
     endbossHurt_sound = new Audio('audio/endbossHurt.mp3');
     endbossDead_sound = new Audio('audio/endbossDead.mp3');
@@ -88,10 +88,20 @@ class Endboss extends MoveableObject {
         setTimeout(() => {
             this.endbossDead_sound.play();
         }, 150);
-    
+
         setInterval(() => {
             this.playAnimation(this.IMAGES_DEAD);
             this.y += 20;
         }, 150);
+
+        this.showGameOverScreen();
+    }
+
+
+    showGameOverScreen() {
+        setTimeout(() => {
+            document.getElementById('gameOverScreen').classList.remove('d-none');
+            document.getElementById('gameOverScreen').classList.add('gameOverScreen');
+        }, 2500);
     }
 }
