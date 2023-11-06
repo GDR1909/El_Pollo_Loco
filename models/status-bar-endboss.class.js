@@ -18,7 +18,6 @@ class StatusBarEndboss extends DrawableObject {
         this.width = 200;
         this.height = 50;
         this.setPercentage(100);
-        this.showStatusbarEndboss();
     }
 
 
@@ -43,13 +42,6 @@ class StatusBarEndboss extends DrawableObject {
             return 1;
         } else {
             return 0;
-        }
-    }
-
-
-    showStatusbarEndboss() {
-        if (!this.hadFirstContact) {
-            this.statusBarEndboss.style.display = 'none';
         }
     }
 }

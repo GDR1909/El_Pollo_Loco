@@ -4,10 +4,11 @@ class Endboss extends MoveableObject {
     y = 55;
     energy = 100;
     speed = 3;
-    // hadFirstContact = false;
+    hadFirstContact = false;
     endbossIsDead = false;
     endbossHurt_sound = new Audio('audio/endbossHurt.mp3');
     endbossDead_sound = new Audio('audio/endbossDead.mp3');
+    win_sound = new Audio('audio/success.mp3');
     IMAGES_WALKING = [
         'img/4_enemie_boss_chicken/1_walk/G1.png',
         'img/4_enemie_boss_chicken/1_walk/G2.png',
@@ -100,6 +101,7 @@ class Endboss extends MoveableObject {
 
     showGameOverScreen() {
         setTimeout(() => {
+            this.win_sound.play();
             document.getElementById('gameOverScreen').classList.remove('d-none');
             document.getElementById('gameOverScreen').classList.add('gameOverScreen');
         }, 2500);

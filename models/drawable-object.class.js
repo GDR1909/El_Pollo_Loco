@@ -6,7 +6,6 @@ class DrawableObject {
     y = 280;
     height = 150;
     width = 100;
-    hadFirstContact = false;
 
 
     // loadImage('img/test.png');

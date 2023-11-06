@@ -66,6 +66,7 @@ class Character extends MoveableObject {
     jumping_sound = new Audio('audio/jump.mp3');
     hurting_sound = new Audio('audio/hurt.mp3');
     characterDead_sound = new Audio('audio/characterDead.mp3');
+    lose_sound = new Audio('audio/failure.mp3');
 
     // offset = {
     //     top: 20,
@@ -167,6 +168,7 @@ class Character extends MoveableObject {
         document.getElementById('canvas').style.transition = 'filter 2s ease-in-out';
 
         setTimeout(() => {
+            this.lose_sound.play();
             document.getElementById('youLostScreen').classList.remove('d-none');
             document.getElementById('youLostScreen').classList.add('youLostScreen');
         }, 2500);
