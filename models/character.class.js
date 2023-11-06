@@ -2,7 +2,7 @@ class Character extends MoveableObject {
     height = 280;
     width = 120;
     y = 50;
-    speed = 10;
+    speed = 5;
     characterIsDead = false;
     IMAGES_IDLE = [
         'img/2_character_pepe/1_idle/idle/I-1.png',
@@ -112,7 +112,7 @@ class Character extends MoveableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            // this.idle_sound.pause();
+            this.idle_sound.pause();
             if (this.isDead() && !this.characterIsDead) {
                 this.characterIsDead = true;
                 this.characterDead();
@@ -144,7 +144,7 @@ class Character extends MoveableObject {
 
         if (right == false && left == false && space == false && d == false && !this.characterIsDead) {
             this.playAnimation(this.IMAGES_IDLE);
-            // this.idle_sound.play();
+            this.idle_sound.play();
         }
     }
 
