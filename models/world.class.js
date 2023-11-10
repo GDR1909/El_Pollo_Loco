@@ -43,7 +43,7 @@ class World {
         setInterval(() => {
             this.checkCollisions();
             this.checkThrowObjects();
-        }, 200);
+        }, 100); //200
     }
 
 
@@ -63,8 +63,10 @@ class World {
                     this.chickenToDelete(enemy);
                     this.character.smallJump();
                 } else {
-                    this.character.hit();
-                    this.statusBarHealth.setPercentage(this.character.energy);
+                    if (!this.character.characterIsHurt) {
+                        this.character.hit()
+                        this.statusBarHealth.setPercentage(this.character.energy);
+                    }
                 }
             }
         });

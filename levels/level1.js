@@ -5,13 +5,13 @@ function initLevel() {
     level1 = new Level(
         [
             new Chicken(),
-            new Chicken(),
-            new Chicken(),
-            new Chicken(),
-            new SmallChicken(),
-            new SmallChicken(),
-            new SmallChicken(),
-            new SmallChicken(),
+            // new Chicken(),
+            // new Chicken(),
+            // new Chicken(),
+            // new SmallChicken(),
+            // new SmallChicken(),
+            // new SmallChicken(),
+            // new SmallChicken(),
             new Endboss()
         ],
 
@@ -47,11 +47,11 @@ function initLevel() {
         ],
 
         [
-            new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
-            new Bottle('img/6_salsa_bottle/2_salsa_bottle_on_ground.png'),
-            new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
-            new Bottle('img/6_salsa_bottle/2_salsa_bottle_on_ground.png'),
-            new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png')
+            // new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+            // new Bottle('img/6_salsa_bottle/2_salsa_bottle_on_ground.png'),
+            // new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png'),
+            // new Bottle('img/6_salsa_bottle/2_salsa_bottle_on_ground.png'),
+            // new Bottle('img/6_salsa_bottle/1_salsa_bottle_on_ground.png')
         ],
 
         [

@@ -3,6 +3,7 @@ class Character extends MoveableObject {
     width = 120;
     y = 50;
     speed = 5;
+    characterIsHurt = false;
     characterIsDead = false;
     IMAGES_IDLE = [
         'img/2_character_pepe/1_idle/idle/I-1.png',
@@ -120,8 +121,10 @@ class Character extends MoveableObject {
                 this.playAnimation(this.IMAGES_HURT);
                 this.hurting_sound.play();
                 this.speed = 2;
+                this.characterIsHurt = true;
                 setTimeout(() => {
                     this.speed = 5;
+                    this.characterIsHurt = false;
                 }, 1500);
             } else if (this.isAboveGround()) {
                 this.playAnimation(this.IMAGES_JUMPING);
@@ -162,6 +165,7 @@ class Character extends MoveableObject {
 
         this.showYouLostScreen();
     }
+
 
     showYouLostScreen() {
         document.getElementById('canvas').style.filter = 'grayscale(100%)';
