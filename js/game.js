@@ -14,11 +14,15 @@ function init() {
 
 
 window.addEventListener("keydown", (e) => {
-    if (e.keyCode == 37) {
+    if (world.character.characterIsDead) {
+        keyboard.LEFT = false;
+    } else if (e.keyCode == 37) {
         keyboard.LEFT = true;
     }
 
-    if (e.keyCode == 39) {
+    if (world.character.characterIsDead) {
+        keyboard.RIGHT = false;
+    } else if (e.keyCode == 39) {
         keyboard.RIGHT = true;
     }
 
@@ -30,11 +34,15 @@ window.addEventListener("keydown", (e) => {
         keyboard.DOWN = true;
     }
 
-    if (e.keyCode == 32) {
+    if (world.character.characterIsDead) {
+        keyboard.SPACE = false;
+    } else if (e.keyCode == 32) {
         keyboard.SPACE = true;
     }
 
-    if (e.keyCode == 68) {
+    if (world.character.characterIsDead) {
+        keyboard.D = false;
+    } else if (e.keyCode == 68) {
         keyboard.D = true;
     }
 })
@@ -68,7 +76,7 @@ window.addEventListener("keyup", (e) => {
 
 
 function start() {
-    music.play();
+    // music.play();
     initLevel();
     init();
     document.getElementById('startScreen').classList.remove('startScreen');
