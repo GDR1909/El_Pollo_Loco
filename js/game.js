@@ -86,6 +86,11 @@ function start() {
 }
 
 
+function restart() {
+    window.location.reload();
+}
+
+
 function showSettings() {
     document.getElementById('settingsContainer').classList.remove('d-none');
     document.getElementById('settingsContainer').classList.add('settingsAndStoryContainer');

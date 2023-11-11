@@ -2,7 +2,6 @@ class Endboss extends MoveableObject {
     height = 400;
     width = 250;
     y = 55;
-    energy = 100;
     speed = 3;
     hadFirstContact = false;
     endbossIsDead = false;
@@ -72,7 +71,6 @@ class Endboss extends MoveableObject {
 
         setInterval(() => {
             if (this.isDead() && !this.endbossIsDead) {
-                this.endbossIsDead = true;
                 this.deadEndboss();
             } else if (this.isHurt() && !this.endbossIsDead) {
                 this.playAnimation(this.IMAGES_HURT);
@@ -86,13 +84,15 @@ class Endboss extends MoveableObject {
 
 
     deadEndboss() {
+        this.endbossIsDead = true;
+
         setTimeout(() => {
             this.endbossDead_sound.play();
         }, 150);
 
         setInterval(() => {
             this.playAnimation(this.IMAGES_DEAD);
-            this.y += 20;
+            this.y += 25;
         }, 150);
 
         this.showGameOverScreen();

@@ -2,7 +2,7 @@ class Character extends MoveableObject {
     height = 280;
     width = 120;
     y = 50;
-    speed = 5;
+    speed = 10;
     characterIsHurt = false;
     characterIsDead = false;
     IMAGES_IDLE = [
