@@ -3,7 +3,7 @@ class MoveableObject extends DrawableObject {
     otherDirection = false;
     speedY = 0;
     acceleration = 2.5;
-    energy = 10;
+    energy = 100;
     lastHit = 0;
 
     // offset = {
@@ -61,7 +61,7 @@ class MoveableObject extends DrawableObject {
     isHurt() {
         let timepassed = new Date().getTime() - this.lastHit; //Differenz in Millisekunden
         timepassed = timepassed / 1000; //Differenz in Sekunden
-        return timepassed < 1.5;
+        return timepassed < 1;
     }
 
 
