@@ -40,6 +40,21 @@ body {
     height: 100%;
 }
 
+.hudOverlay {
+    width: 100%;
+}
+
+.hudOverlay img {
+    height: 40px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.touchControlls {
+    display: flex;
+    justify-content: space-between;
+}
+
 .startScreen {
     width: 100%;
     max-width: 850px;
