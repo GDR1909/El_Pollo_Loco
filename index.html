@@ -38,21 +38,23 @@
 
     <h1 id="h1" class="v-hidden">El Pollo Loco</h1>
 
-    <canvas id="canvas" class="d-none" width="720" height="480"></canvas>
+    <div class="content">
+        <canvas id="canvas" class="d-none" width="720" height="480"></canvas>
 
-    <div class="hudOverlay">
-        <div class="touchControlls">
-            <div class="moveLeftRightButtons">
-                <img src="img/moveLeftIcon.png">
-                <img src="img/moveRightIcon.png">
-            </div>
+        <div class="d-none" id="hudOverlay">
+            <img src="img/sound-on.png">
+            <img src="img/fullScreenIcon.png">
+        </div>
 
-            <div class="jumpThrowButtons">
-                <img src="img/jumpIcon.png">
-                <img src="img/throwBottleIcon.png">
-            </div>
+        <div class="d-none" id="youLostScreen">
+            <button onclick="restart()">Restart</button>
+        </div>
+
+        <div class="d-none" id="gameOverScreen">
+            <button onclick="restart()">Restart</button>
         </div>
     </div>
+
 
     <div class="startScreen" id="startScreen">
         <button onclick="start()">Start</button>
@@ -110,14 +112,6 @@
                 sands.
             </span>
         </div>
-    </div>
-
-    <div class="d-none" id="youLostScreen">
-        <button onclick="restart()">Restart</button>
-    </div>
-
-    <div class="d-none" id="gameOverScreen">
-        <button onclick="restart()">Restart</button>
     </div>
 </body>
 

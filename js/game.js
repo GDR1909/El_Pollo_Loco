@@ -14,13 +14,15 @@ function init() {
 
 
 function start() {
-    // music.play();
+    music.play();
     initLevel();
     init();
     document.getElementById('startScreen').classList.remove('startScreen');
     document.getElementById('startScreen').classList.add('d-none');
     document.getElementById('h1').classList.remove('v-hidden');
     document.getElementById('canvas').classList.remove('d-none');
+    document.getElementById('hudOverlay').classList.remove('d-none');
+    document.getElementById('hudOverlay').classList.add('hudOverlay');
 }
 
 
