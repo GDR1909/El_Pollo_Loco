@@ -42,7 +42,7 @@
         <canvas id="canvas" class="d-none" width="720" height="480"></canvas>
 
         <div class="d-none" id="hudOverlay">
-            <img src="img/sound-on.png">
+            <img src="img/sound-on.png" id="sound" onclick="turnSoundOnOff('img/sound-off.png')">
             <img src="img/fullScreenIcon.png">
         </div>
 
@@ -85,12 +85,6 @@
                 <tr>
                     <td><img src="img/d-button.png"></td>
                     <td>Throw bottle</td>
-                </tr>
-
-                <tr>
-                    <td><img src="img/sound-off.png" id="sound" class="sound"
-                            onclick="turnSoundOnOff('img/sound-on.png')"></td>
-                    <td>Turn sound on/off</td>
                 </tr>
             </table>
 
