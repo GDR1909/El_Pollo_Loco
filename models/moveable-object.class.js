@@ -100,7 +100,8 @@ class MoveableObject extends DrawableObject {
 
 
     killChicken() {
-        this.dead_sound.play();
+        // this.dead_sound.play();
+        playAudio(this.dead_sound);
         this.energy = 0;
     }
 }

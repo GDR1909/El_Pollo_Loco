@@ -33,6 +33,7 @@ body {
     justify-content: center;
     align-items: center;
     backdrop-filter: blur(7px);
+    z-index: 100;
 }
 
 .hintToRotateOverlay img {
@@ -80,7 +81,7 @@ body {
     justify-content: center;
     align-items: center;
     position: fixed;
-    z-index: 1000;
+    z-index: 10;
     overflow-y: auto;
 }
 
@@ -231,11 +232,11 @@ canvas {
     }
 }
 
-/* @media (max-width: 800px) {
+@media (max-width: 800px) {
     .hintToRotateOverlay {
         display: flex;
     }
-} */
+}
 
 /* Smartphones ---------- */
 @media only screen and (max-width: 720px) {

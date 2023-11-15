@@ -2,7 +2,7 @@ class Character extends MoveableObject {
     height = 280;
     width = 120;
     y = 50;
-    speed = 10;
+    speed = 5;
     characterIsHurt = false;
     characterIsDead = false;
     IMAGES_IDLE = [
@@ -95,18 +95,21 @@ class Character extends MoveableObject {
             if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
                 this.moveRight();
                 this.otherDirection = false;
-                this.walking_sound.play();
+                // this.walking_sound.play();
+                playAudio(this.walking_sound);
             }
 
             if (this.world.keyboard.LEFT && this.x > 0) {
                 this.moveLeft();
                 this.otherDirection = true;
-                this.walking_sound.play();
+                // this.walking_sound.play();
+                playAudio(this.walking_sound);
             }
 
             if (this.world.keyboard.SPACE && !this.isAboveGround()) {
                 this.jump();
-                this.jumping_sound.play();
+                // this.jumping_sound.play();
+                playAudio(this.jumping_sound);
             }
 
             this.world.camera_x = -this.x + 100;
@@ -119,7 +122,8 @@ class Character extends MoveableObject {
                 this.characterDead();
             } else if (this.isHurt()) {
                 this.playAnimation(this.IMAGES_HURT);
-                this.hurting_sound.play();
+                // this.hurting_sound.play();
+                playAudio(this.hurting_sound);
                 this.speed = 2;
                 this.characterIsHurt = true;
                 setTimeout(() => {
@@ -147,14 +151,16 @@ class Character extends MoveableObject {
 
         if (right == false && left == false && space == false && d == false && !this.characterIsDead) {
             this.playAnimation(this.IMAGES_IDLE);
-            this.idle_sound.play();
+            // this.idle_sound.play();
+            playAudio(this.idle_sound);
         }
     }
 
 
     characterDead() {
         setTimeout(() => {
-            this.characterDead_sound.play();
+            // this.characterDead_sound.play();
+            playAudio(this.characterDead_sound);
         }, 150);
 
         setInterval(() => {
@@ -172,7 +178,8 @@ class Character extends MoveableObject {
         document.getElementById('canvas').style.transition = 'filter 2s ease-in-out';
 
         setTimeout(() => {
-            this.lose_sound.play();
+            // this.lose_sound.play();
+            playAudio(this.lose_sound);
             document.getElementById('youLostScreen').classList.remove('d-none');
             document.getElementById('youLostScreen').classList.add('youLostScreen');
         }, 2500);

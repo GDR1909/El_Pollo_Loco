@@ -1,6 +1,7 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let soundIsActive = true;
 let music = new Audio('audio/music.mp3');
 music.loop = true;
 
@@ -43,14 +44,34 @@ function showStory() {
 }
 
 
-function turnSoundOnOff(imagePath) {
-    document.getElementById('sound').src = imagePath;
-    if (imagePath == 'img/sound-off.png') {
-        document.getElementById('sound').setAttribute("onClick", "turnSoundOnOff('img/sound-on.png')");
-        music.pause();
-    } else {
-        document.getElementById('sound').setAttribute("onClick", "turnSoundOnOff('img/sound-off.png')");
+// function turnSoundOnOff(imagePath) {
+//     document.getElementById('sound').src = imagePath;
+//     if (imagePath == 'img/sound-off.png') {
+//         document.getElementById('sound').setAttribute("onClick", "turnSoundOnOff('img/sound-on.png')");
+//         music.pause();
+//     } else {
+//         document.getElementById('sound').setAttribute("onClick", "turnSoundOnOff('img/sound-off.png')");
+//         music.play();
+//     }
+// }
+
+
+function toggleSoundActive() {
+    soundIsActive = !soundIsActive;
+
+    if (soundIsActive) {
         music.play();
+        document.getElementById('sound').src = 'img/sound-on.png';
+    } else {
+        music.pause();
+        document.getElementById('sound').src = 'img/sound-off.png';
+    }
+}
+
+
+function playAudio(audio) {
+    if (soundIsActive) {
+        audio.play();
     }
 }
 

@@ -53,7 +53,8 @@ class ThrowableObject extends MoveableObject {
                 setTimeout(() => {
                     this.speedY = 0;
                     this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);
-                    this.bottle_splash_sound.play();
+                    // this.bottle_splash_sound.play();
+                    playAudio(this.bottle_splash_sound);
                     bottleSplashSoundPlayed = true;
                     this.hitted = false;
                 }, 10);

@@ -74,7 +74,8 @@ class World {
 
         this.level.coins = this.level.coins.filter((coin) => {
             if (this.character.isColliding(coin)) {
-                this.collecting_coin_sound.play();
+                // this.collecting_coin_sound.play();
+                playAudio(this.collecting_coin_sound);
                 this.statusBarCoin.collectCoin();
                 this.statusBarCoin.setPercentage(this.statusBarCoin.coinAmount);
                 return false;
@@ -84,7 +85,8 @@ class World {
 
         this.level.bottles = this.level.bottles.filter((bottle) => {
             if (this.character.isColliding(bottle)) {
-                this.collecting_bottle_sound.play();
+                // this.collecting_bottle_sound.play();
+                playAudio(this.collecting_bottle_sound);
                 this.collectedBottles.push(bottle);
                 this.statusBarBottle.collectBottle();
                 this.statusBarBottle.setPercentage(this.statusBarBottle.bottleAmount);

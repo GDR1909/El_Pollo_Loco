@@ -74,7 +74,8 @@ class Endboss extends MoveableObject {
                 this.deadEndboss();
             } else if (this.isHurt() && !this.endbossIsDead) {
                 this.playAnimation(this.IMAGES_HURT);
-                this.endbossHurt_sound.play();
+                // this.endbossHurt_sound.play();
+                playAudio(this.endbossHurt_sound);
                 this.speed = 0;
             } else if (!this.endbossIsDead) {
                 this.playAnimation(this.IMAGES_WALKING);
@@ -87,7 +88,8 @@ class Endboss extends MoveableObject {
         this.endbossIsDead = true;
 
         setTimeout(() => {
-            this.endbossDead_sound.play();
+            // this.endbossDead_sound.play();
+            playAudio(this.endbossDead_sound);
         }, 150);
 
         setInterval(() => {
@@ -101,7 +103,8 @@ class Endboss extends MoveableObject {
 
     showGameOverScreen() {
         setTimeout(() => {
-            this.win_sound.play();
+            // this.win_sound.play();
+            playAudio(this.win_sound);
             document.getElementById('gameOverScreen').classList.remove('d-none');
             document.getElementById('gameOverScreen').classList.add('gameOverScreen');
         }, 2500);
