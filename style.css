@@ -139,7 +139,8 @@ canvas {
 .hudOverlay {
     position: absolute;
     right: 10px;
-    bottom: 10px;
+    /* bottom: 10px; */
+    top: 50px;
     display: flex;
     gap: 8px;
 }
@@ -222,6 +223,44 @@ canvas {
     transition: all ease-in-out 125ms;
 }
 
+.touchControlls {
+    position: absolute;
+    display: none;
+    justify-content: space-between;
+    width: 100%;
+    bottom: 10px;
+}
+
+.touchControlls img {
+    height: 30px;
+    position: absolute;
+}
+
+.touchButtons {
+    position: relative;
+    height: 30px;
+    width: 30px;
+    padding: 8px;
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    backdrop-filter: blur(10px);
+}
+
+.moveLeftRightButtons {
+    display: flex;
+    margin-left: 20px;
+    gap: 15px;
+}
+
+.jumpAndThrowBottleButtons {
+    display: flex;
+    margin-right: 20px;
+    gap: 15px;
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
@@ -243,6 +282,14 @@ canvas {
     canvas {
         width: 100%;
     }
+
+    h1 {
+        display: none;
+    }
+
+    .touchControlls {
+        display: flex;
+    }
 }
 
 /* Smartphones ---------- */
@@ -253,5 +300,9 @@ canvas {
 
     h1 {
         display: none;
+    }
+
+    .touchControlls {
+        display: flex;
     }
 }

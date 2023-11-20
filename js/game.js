@@ -9,6 +9,7 @@ music.loop = true;
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
+    mobileButtonsTouchEvent();
 
     console.log('My Character is:', world.character);
 }
@@ -79,4 +80,40 @@ function playAudio(audio) {
 function back(sc) {
     document.getElementById(sc).classList.remove('settingsAndStoryContainer');
     document.getElementById(sc).classList.add('d-none');
+}
+
+
+function mobileButtonsTouchEvent() {
+    document.getElementById('moveLeftBtn').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.LEFT = true;
+    });
+    document.getElementById('moveLeftBtn').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.LEFT = false;
+    });
+    document.getElementById('moveRightBtn').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.RIGHT = true;
+    });
+    document.getElementById('moveRightBtn').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.RIGHT = false;
+    });
+    document.getElementById('jumpBtn').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.SPACE = true;
+    });
+    document.getElementById('jumpBtn').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.SPACE = false;
+    });
+    document.getElementById('throwBottleBtn').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.D = true;
+    });
+    document.getElementById('throwBottleBtn').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.D = false;
+    });
 }
