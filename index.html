@@ -38,12 +38,12 @@
 
     <h1 id="h1" class="v-hidden">El Pollo Loco</h1>
 
-    <div class="content">
+    <div class="content" id="fullscreen">
         <canvas id="canvas" class="d-none" width="720" height="480"></canvas>
 
         <div class="d-none" id="hudOverlay">
             <img src="img/sound-on.png" id="sound" onclick="toggleSoundActive()">
-            <img src="img/fullScreenIcon.png">
+            <img src="img/fullScreenIcon.png" id="fullScreenIcon" onclick="openFullscreen()">
         </div>
 
         <div class="d-none" id="youLostScreen">

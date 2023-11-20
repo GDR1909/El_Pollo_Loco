@@ -117,3 +117,45 @@ function mobileButtonsTouchEvent() {
         keyboard.D = false;
     });
 }
+
+
+function openFullscreen() {
+    let fullscreen = document.getElementById('fullscreen');
+    enterFullscreen(fullscreen);
+    setFullscreenForLevel();
+}
+
+
+function enterFullscreen(element) {
+    if (element.requestFullscreen) {
+        element.requestFullscreen();
+    } else if (element.msRequestFullscreen) {      // for IE11 (remove June 15, 2022)
+        element.msRequestFullscreen();
+    } else if (element.webkitRequestFullscreen) {  // iOS Safari
+        element.webkitRequestFullscreen();
+    }
+}
+
+
+function setFullscreenForLevel() {
+    document.getElementById('canvas').classList.add('fullscreen');
+    document.getElementById('fullScreenIcon').src = 'img/minimizeIcon.png';
+    document.getElementById('fullScreenIcon').setAttribute('onClick', 'removeFullscreenForLevel()');
+}
+
+
+function removeFullscreenForLevel() {
+    document.getElementById('canvas').classList.remove('fullscreen');
+    document.getElementById('fullScreenIcon').src = 'img/fullScreenIcon.png';
+    document.getElementById('fullScreenIcon').setAttribute('onClick', 'openFullscreen()');
+    exitFullscreen();
+}
+
+
+function exitFullscreen() {
+    if (document.exitFullscreen) {
+        document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+    }
+}

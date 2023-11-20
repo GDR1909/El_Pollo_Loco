@@ -261,6 +261,11 @@ canvas {
     gap: 15px;
 }
 
+.fullscreen {
+    height: 100%;
+    width: 100%;
+}
+
 @keyframes fadeIn {
     0% {
         opacity: 0;
