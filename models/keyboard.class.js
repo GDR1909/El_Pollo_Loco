@@ -3,6 +3,7 @@ class Keyboard {
     RIGHT = false;
     SPACE = false;
     D = false;
+    ESCAPE = false;
 }
 
 
@@ -30,6 +31,10 @@ window.addEventListener("keydown", (e) => {
     } else if (e.keyCode == 68) {
         keyboard.D = true;
     }
+
+    if (e.keyCode == 27) {
+        keyboard.ESCAPE = true;
+    }
 })
 
 
@@ -48,5 +53,9 @@ window.addEventListener("keyup", (e) => {
 
     if (e.keyCode == 68) {
         keyboard.D = false;
+    }
+
+    if (e.keyCode == 27) {
+        keyboard.ESCAPE = false;
     }
 })

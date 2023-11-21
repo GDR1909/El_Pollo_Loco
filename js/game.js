@@ -16,7 +16,7 @@ function init() {
 
 
 function start() {
-    music.play();
+    // music.play();
     initLevel();
     init();
     document.getElementById('startScreen').classList.remove('startScreen');
@@ -117,6 +117,18 @@ function mobileButtonsTouchEvent() {
         keyboard.D = false;
     });
 }
+
+
+document.addEventListener('keydown', function (e) {
+    if (e.ESCAPE == false) {
+        removeFullscreenForLevel();
+    }
+    
+    
+    // if (e.key === 'Escape') {
+    //     removeFullscreenForLevel();
+    // }
+});
 
 
 function openFullscreen() {
