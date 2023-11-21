@@ -139,6 +139,7 @@ function enterFullscreen(element) {
 
 function setFullscreenForLevel() {
     document.getElementById('canvas').classList.add('fullscreen');
+    document.getElementById('hudOverlay').classList.add('hudOverlayForFullscreen');
     document.getElementById('fullScreenIcon').src = 'img/minimizeIcon.png';
     document.getElementById('fullScreenIcon').setAttribute('onClick', 'removeFullscreenForLevel()');
 }
@@ -146,6 +147,7 @@ function setFullscreenForLevel() {
 
 function removeFullscreenForLevel() {
     document.getElementById('canvas').classList.remove('fullscreen');
+    document.getElementById('hudOverlay').classList.remove('hudOverlayForFullscreen');
     document.getElementById('fullScreenIcon').src = 'img/fullScreenIcon.png';
     document.getElementById('fullScreenIcon').setAttribute('onClick', 'openFullscreen()');
     exitFullscreen();
