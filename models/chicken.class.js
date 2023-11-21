@@ -1,3 +1,5 @@
+// hier weiter machen mit js doc
+
 class Chicken extends MoveableObject {
     height = 60;
     width = 60;

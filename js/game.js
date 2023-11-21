@@ -6,6 +6,9 @@ let music = new Audio('audio/music.mp3');
 music.loop = true;
 
 
+/**
+ * This function initlize the website and executes another function
+ */
 function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
@@ -15,6 +18,9 @@ function init() {
 }
 
 
+/**
+ * This function starts the game with background music beeing played and it executes two other functions
+ */
 function start() {
     // music.play();
     initLevel();
@@ -28,35 +34,29 @@ function start() {
 }
 
 
+/**With this function you can restart the game */
 function restart() {
     window.location.reload();
 }
 
 
+/**This function shows the settings for the game */
 function showSettings() {
     document.getElementById('settingsContainer').classList.remove('d-none');
     document.getElementById('settingsContainer').classList.add('settingsAndStoryContainer');
 }
 
 
+/**This function shows the story of the game */
 function showStory() {
     document.getElementById('storyContainer').classList.remove('d-none');
     document.getElementById('storyContainer').classList.add('settingsAndStoryContainer');
 }
 
 
-// function turnSoundOnOff(imagePath) {
-//     document.getElementById('sound').src = imagePath;
-//     if (imagePath == 'img/sound-off.png') {
-//         document.getElementById('sound').setAttribute("onClick", "turnSoundOnOff('img/sound-on.png')");
-//         music.pause();
-//     } else {
-//         document.getElementById('sound').setAttribute("onClick", "turnSoundOnOff('img/sound-off.png')");
-//         music.play();
-//     }
-// }
-
-
+/**
+ * This function turns the music on and off and it switches the icon
+ */
 function toggleSoundActive() {
     soundIsActive = !soundIsActive;
 
@@ -70,6 +70,9 @@ function toggleSoundActive() {
 }
 
 
+/**
+ * This function checks and plays the audio when it's active
+ */
 function playAudio(audio) {
     if (soundIsActive) {
         audio.play();
@@ -77,12 +80,19 @@ function playAudio(audio) {
 }
 
 
+/**
+ * This function gets you back to the start screen
+ * @param {'settingsContainer' or 'storyContainer'} sc 
+ */
 function back(sc) {
     document.getElementById(sc).classList.remove('settingsAndStoryContainer');
     document.getElementById(sc).classList.add('d-none');
 }
 
 
+/**
+ * This function is for the mobile touch buttons when you are using a mobile device
+ */
 function mobileButtonsTouchEvent() {
     document.getElementById('moveLeftBtn').addEventListener('touchstart', (e) => {
         e.preventDefault();
@@ -119,18 +129,32 @@ function mobileButtonsTouchEvent() {
 }
 
 
-document.addEventListener('keydown', function (e) {
-    if (e.ESCAPE == false) {
-        removeFullscreenForLevel();
+// document.addEventListener('keydown', function (e) {
+// if (e.ESCAPE == false) {
+//     removeFullscreenForLevel();
+// }
+
+
+// if (e.key === 'Escape') {
+//     removeFullscreenForLevel();
+// }
+// });
+
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        //if esc key was not pressed in combination with ctrl or alt or shift
+        const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
+        if (isNotCombinedKey) {
+            console.log('Escape key was pressed with out any group keys');
+        }
     }
-    
-    
-    // if (e.key === 'Escape') {
-    //     removeFullscreenForLevel();
-    // }
 });
 
 
+/**
+ * This function defines the variable "fullscreen" and executes two more functions
+ */
 function openFullscreen() {
     let fullscreen = document.getElementById('fullscreen');
     enterFullscreen(fullscreen);
@@ -138,6 +162,10 @@ function openFullscreen() {
 }
 
 
+/**
+ * This function enters the fullscreen mode
+ * @param {fullscreen} element 
+ */
 function enterFullscreen(element) {
     if (element.requestFullscreen) {
         element.requestFullscreen();
@@ -149,6 +177,9 @@ function enterFullscreen(element) {
 }
 
 
+/**
+ * This function sets the css-classes for the fullscreen mode
+ */
 function setFullscreenForLevel() {
     document.getElementById('canvas').classList.add('fullscreen');
     document.getElementById('hudOverlay').classList.add('hudOverlayForFullscreen');
@@ -157,6 +188,9 @@ function setFullscreenForLevel() {
 }
 
 
+/**
+ * This function removes the css-classes that are necessary for the fullscreen mode and executes another function
+ */
 function removeFullscreenForLevel() {
     document.getElementById('canvas').classList.remove('fullscreen');
     document.getElementById('hudOverlay').classList.remove('hudOverlayForFullscreen');
@@ -166,6 +200,9 @@ function removeFullscreenForLevel() {
 }
 
 
+/**
+ * With this function you exit from the fullscreen mode
+ */
 function exitFullscreen() {
     if (document.exitFullscreen) {
         document.exitFullscreen();

@@ -69,13 +69,6 @@ class Character extends MoveableObject {
     characterDead_sound = new Audio('audio/characterDead.mp3');
     lose_sound = new Audio('audio/failure.mp3');
 
-    // offset = {
-    //     top: 20,
-    //     bottom: 30,
-    //     left: 40,
-    //     right: 30
-    // };
-
 
     constructor() {
         super().loadImage('img/2_character_pepe/2_walk/W-21.png');
@@ -89,77 +82,94 @@ class Character extends MoveableObject {
     }
 
 
+    /**
+     * This function executes all the animations for the character
+     */
     animate() {
         setInterval(() => {
-            this.walking_sound.pause();
-            if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
-                this.moveRight();
-                this.otherDirection = false;
-                // this.walking_sound.play();
-                playAudio(this.walking_sound);
-            }
-
-            if (this.world.keyboard.LEFT && this.x > 0) {
-                this.moveLeft();
-                this.otherDirection = true;
-                // this.walking_sound.play();
-                playAudio(this.walking_sound);
-            }
-
-            if (this.world.keyboard.SPACE && !this.isAboveGround()) {
-                this.jump();
-                // this.jumping_sound.play();
-                playAudio(this.jumping_sound);
-            }
-
-            this.world.camera_x = -this.x + 100;
+            this.movingAnimations();
         }, 1000 / 60);
 
         setInterval(() => {
-            this.idle_sound.pause();
-            if (this.isDead() && !this.characterIsDead) {
-                this.characterIsDead = true;
-                this.characterDead();
-            } else if (this.isHurt()) {
-                this.playAnimation(this.IMAGES_HURT);
-                // this.hurting_sound.play();
-                playAudio(this.hurting_sound);
-                this.speed = 2;
-                this.characterIsHurt = true;
-                setTimeout(() => {
-                    this.speed = 5;
-                    this.characterIsHurt = false;
-                }, 1500);
-            } else if (this.isAboveGround()) {
-                this.playAnimation(this.IMAGES_JUMPING);
-            } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) { // Das "||" bedeutet in JavaScript bei einer if-Abfrage logisches "oder".
-                this.playAnimation(this.IMAGES_WALKING);
-            } else {
-                setTimeout(() => {
-                    this.isIdle();
-                }, 2000);
-            }
+            this.playAnimations();
         }, 100);
     }
 
 
-    isIdle() {
-        let right = this.world.keyboard.RIGHT;
-        let left = this.world.keyboard.LEFT;
-        let space = this.world.keyboard.SPACE;
-        let d = this.world.keyboard.D;
+    /**
+     * This function executes the moving animations of the character 
+     */
+    movingAnimations() {
+        this.walking_sound.pause();
+        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+            this.moveRightAnimation();
+        }
+        if (this.world.keyboard.LEFT && this.x > 0) {
+            this.moveLeftAnimation();
+        }
+        if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+            this.jumpAnimation();
+        }
+        this.world.camera_x = -this.x + 100;
+    }
 
-        if (right == false && left == false && space == false && d == false && !this.characterIsDead) {
-            this.playAnimation(this.IMAGES_IDLE);
-            // this.idle_sound.play();
-            playAudio(this.idle_sound);
+
+    /**
+     * This function plays the animations for the character
+     */
+    playAnimations() {
+        this.idle_sound.pause();
+        if (this.isDead() && !this.characterIsDead) {
+            this.deadAnimation();
+        } else if (this.isHurt()) {
+            this.hurtAnimation();
+        } else if (this.isAboveGround()) {
+            this.playAnimation(this.IMAGES_JUMPING);
+        } else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT) {
+            this.playAnimation(this.IMAGES_WALKING);
+        } else {
+            setTimeout(() => {
+                this.isIdle();
+            }, 2000);
         }
     }
 
 
-    characterDead() {
+    /**
+     * This function lets the character move left
+     */
+    moveRightAnimation() {
+        this.moveRight();
+        this.otherDirection = false;
+        playAudio(this.walking_sound);
+    }
+
+
+    /**
+     * This function lets the character move right
+     */
+    moveLeftAnimation() {
+        this.moveLeft();
+        this.otherDirection = true;
+        playAudio(this.walking_sound);
+    }
+
+
+    /**
+     * This function lets the character jump
+     */
+    jumpAnimation() {
+        this.jump();
+        playAudio(this.jumping_sound);
+    }
+
+
+    /**
+     * This function plays the animation when the character dies and executes another function
+     */
+    deadAnimation() {
+        this.characterIsDead = true;
         setTimeout(() => {
-            // this.characterDead_sound.play();
             playAudio(this.characterDead_sound);
         }, 150);
 
@@ -173,12 +183,45 @@ class Character extends MoveableObject {
     }
 
 
+    /**
+     * This function plays the animation when the character is hurt
+     */
+    hurtAnimation() {
+        this.playAnimation(this.IMAGES_HURT);
+        playAudio(this.hurting_sound);
+        this.speed = 2;
+        this.characterIsHurt = true;
+        setTimeout(() => {
+            this.speed = 5;
+            this.characterIsHurt = false;
+        }, 1000);
+    }
+
+
+    /**
+     * This function plays the animation when the character is not moving
+     */
+    isIdle() {
+        let right = this.world.keyboard.RIGHT;
+        let left = this.world.keyboard.LEFT;
+        let space = this.world.keyboard.SPACE;
+        let d = this.world.keyboard.D;
+
+        if (right == false && left == false && space == false && d == false && !this.characterIsDead) {
+            this.playAnimation(this.IMAGES_IDLE);
+            playAudio(this.idle_sound);
+        }
+    }
+
+
+    /**
+     * This function shows the "You Lost" screen after the character dies
+     */
     showYouLostScreen() {
         document.getElementById('canvas').style.filter = 'grayscale(100%)';
         document.getElementById('canvas').style.transition = 'filter 2s ease-in-out';
 
         setTimeout(() => {
-            // this.lose_sound.play();
             playAudio(this.lose_sound);
             document.getElementById('youLostScreen').classList.remove('d-none');
             document.getElementById('youLostScreen').classList.add('youLostScreen');
