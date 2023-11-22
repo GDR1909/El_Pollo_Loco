@@ -129,29 +129,6 @@ function mobileButtonsTouchEvent() {
 }
 
 
-// document.addEventListener('keydown', function (e) {
-// if (e.ESCAPE == false) {
-//     removeFullscreenForLevel();
-// }
-
-
-// if (e.key === 'Escape') {
-//     removeFullscreenForLevel();
-// }
-// });
-
-
-document.addEventListener('keydown', (event) => {
-    if (event.key === 'Escape') {
-        //if esc key was not pressed in combination with ctrl or alt or shift
-        const isNotCombinedKey = !(event.ctrlKey || event.altKey || event.shiftKey);
-        if (isNotCombinedKey) {
-            console.log('Escape key was pressed with out any group keys');
-        }
-    }
-});
-
-
 /**
  * This function defines the variable "fullscreen" and executes two more functions
  */
