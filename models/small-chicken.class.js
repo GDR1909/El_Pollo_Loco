@@ -24,6 +24,9 @@ class SmallChicken extends MoveableObject {
     }
 
 
+    /**
+     * This function executes all the animations for the small chickens
+     */
     animate() {
         setInterval(() => {
             if (!this.isDead()) {

@@ -1,5 +1,3 @@
-// hier weiter machen mit js doc
-
 class Chicken extends MoveableObject {
     height = 60;
     width = 60;
@@ -26,6 +24,9 @@ class Chicken extends MoveableObject {
     }
 
 
+    /**
+     * This function executes all the animations for the chickens
+     */
     animate() {
         setInterval(() => {
             if (!this.isDead()) {

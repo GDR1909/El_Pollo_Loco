@@ -22,6 +22,9 @@ class StatusBarBottle extends DrawableObject {
     }
 
 
+    /**
+     * This function increases the amount of bottles by 20 when it isn't 100
+     */
     collectBottle() {
         this.bottleAmount += 20;
         if (this.bottleAmount > 100) {
@@ -30,6 +33,9 @@ class StatusBarBottle extends DrawableObject {
     }
 
 
+    /**
+     * This function decreases the amount of bottles by 20 when it isn't 0
+     */
     removeBottle() {
         this.bottleAmount -= 20;
         if (this.bottleAmount < 0) {
@@ -38,14 +44,21 @@ class StatusBarBottle extends DrawableObject {
     }
 
 
-    //Bsp: setPercentage(50);
-    setPercentage(percentage) {
+    /**
+     * This function sets the percentage for the bottle satusbar
+     * @param {Percentage} percentage 
+     */
+    setPercentage(percentage) { //Bsp: setPercentage(50);
         this.percentage = percentage; // => 0 ... 5
         let path = this.IMAGES_BOTTLE[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 
 
+    /**
+     * This function displays the correct value for the statusbar
+     * @returns the position of the image in the array "IMAGES_BOTTLE"
+     */
     resolveImageIndex() {
         if (this.percentage == 100) {
             return 5;

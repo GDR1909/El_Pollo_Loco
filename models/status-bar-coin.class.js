@@ -22,6 +22,9 @@ class StatusBarCoin extends DrawableObject {
     }
 
 
+    /**
+     * This function increases the amount of coins by 20 when it isn't 100
+     */
     collectCoin() {
         this.coinAmount += 20;
         if (this.coinAmount > 100) {
@@ -30,14 +33,21 @@ class StatusBarCoin extends DrawableObject {
     }
 
 
-    //Bsp: setPercentage(50);
-    setPercentage(percentage) {
+    /**
+     * This function sets the percentage for the coin satusbar
+     * @param {Percentage} percentage 
+     */
+    setPercentage(percentage) { //Bsp: setPercentage(50);
         this.percentage = percentage; // => 0 ... 5
         let path = this.IMAGES_COIN[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 
 
+    /**
+     * This function displays the correct value for the statusbar
+     * @returns the position of the image in the array "IMAGES_COIN"
+     */
     resolveImageIndex() {
         if (this.percentage == 100) {
             return 5;

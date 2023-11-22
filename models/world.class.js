@@ -27,6 +27,9 @@ class World {
     }
 
 
+    /**
+     * This function removes bottle after they were thrown and splashed
+     */
     updateThrowableObjects() {
         setInterval(() => {
             this.ThrowableObjects = this.ThrowableObjects.filter(to => !to.removed);
@@ -34,11 +37,17 @@ class World {
     }
 
 
+    /**
+     * This function puts the character in the game
+     */
     setWorld() {
         this.character.world = this;
     }
 
 
+    /**
+     * This function checks every 0.1 seconds if a collision happened and if a bottle were thrown
+     */
     run() {
         setInterval(() => {
             this.checkCollisions();
@@ -47,6 +56,10 @@ class World {
     }
 
 
+    /**
+     * This function removes the chicken and small chicken after they get killed
+     * @param {enemies} enemy 
+     */
     chickenToDelete(enemy) {
         setTimeout(() => {
             this.level.enemies.splice(this.level.enemies.indexOf(enemy), 1);
@@ -54,27 +67,70 @@ class World {
     }
 
 
+    /**
+     * This functions checks if the character collides with an enemy or with a coin or with a bottle
+     */
     checkCollisions() {
+        this.collisionWithEnemy();
+        this.collisionWithCoin();
+        this.collisionWithBottle();
+    }
+
+
+    /**
+     * This function checks if the character collides with an enemy
+     */
+    collisionWithEnemy() {
         this.level.enemies.forEach((enemy) => {
-            if (!enemy.isDead() && this.character.isColliding(enemy)) {
+            if (this.enemyNotDeadAndCharacterIsCollidingWithEnemy(enemy)) {
                 if (this.character.isAboveGround()) {
-                    console.log(enemy, 'gets jumped on!');
-                    enemy.killChicken();
-                    this.chickenToDelete(enemy);
-                    this.character.smallJump();
+                    this.enemyGetKilled(enemy);
                 } else {
                     if (!this.character.characterIsHurt) {
-                        this.character.hit()
-                        this.statusBarHealth.setPercentage(this.character.energy);
+                        this.characterGetHitted();
                     }
                 }
             }
         });
+    }
 
 
+    /**
+     * This function returns the condition for the collision between the enemy and the character
+     * @param {enemies} enemy
+     */
+    enemyNotDeadAndCharacterIsCollidingWithEnemy(enemy) {
+        return !enemy.isDead() && this.character.isColliding(enemy);
+    }
+
+
+    /**
+     * This function plays the animation when the enemy get killed
+     * @param {enemies} enemy 
+     */
+    enemyGetKilled(enemy) {
+        console.log(enemy, 'gets jumped on!');
+        enemy.killChicken();
+        this.chickenToDelete(enemy);
+        this.character.smallJump();
+    }
+
+
+    /**
+     * This function plays the animation when the character get hitted
+     */
+    characterGetHitted() {
+        this.character.hit()
+        this.statusBarHealth.setPercentage(this.character.energy);
+    }
+
+
+    /**
+     * This function checks if the character collides with a coin and removes it from the level
+     */
+    collisionWithCoin() {
         this.level.coins = this.level.coins.filter((coin) => {
             if (this.character.isColliding(coin)) {
-                // this.collecting_coin_sound.play();
                 playAudio(this.collecting_coin_sound);
                 this.statusBarCoin.collectCoin();
                 this.statusBarCoin.setPercentage(this.statusBarCoin.coinAmount);
@@ -82,10 +138,15 @@ class World {
             }
             return true;
         });
+    }
 
+
+    /**
+     * This function checks if the character collides with a bottle and removes it from the level
+     */
+    collisionWithBottle() {
         this.level.bottles = this.level.bottles.filter((bottle) => {
             if (this.character.isColliding(bottle)) {
-                // this.collecting_bottle_sound.play();
                 playAudio(this.collecting_bottle_sound);
                 this.collectedBottles.push(bottle);
                 this.statusBarBottle.collectBottle();
@@ -97,6 +158,9 @@ class World {
     }
 
 
+    /**
+     * This function lets the character only throw bottle if he collected some before. the statusbar of the bottles will change too
+     */
     checkThrowObjects() {
         if (this.collectedBottles == 0) {
             this.keyboard.D = false;
@@ -111,6 +175,9 @@ class World {
     }
 
 
+    /**
+     * This function checks if the flying bottle hits the endboss. if it hits the endboss his statusbar will change
+     */
     checkIfFlyingBottleHitsEnemy() {
         this.ThrowableObjects.forEach(bottle => {
             this.level.enemies.forEach(enemy => {
@@ -126,6 +193,9 @@ class World {
     }
 
 
+    /**
+     * This function adds all the objects to the game level
+     */
     draw() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
@@ -158,6 +228,10 @@ class World {
     }
 
 
+    /**
+     * This function adds objects that are moveable to the map
+     * @param {enemies / clouds / bottles / coins / ThrowableObjects} objects 
+     */
     addObjectsToMap(objects) {
         objects.forEach(o => {
             this.addToMap(o);
@@ -165,6 +239,10 @@ class World {
     }
 
 
+    /**
+     * This function adds objects that are fixed to the map
+     * @param {moveableObjects} mo 
+     */
     addToMap(mo) {
         if (mo.otherDirection) {
             this.flipImage(mo);
@@ -178,6 +256,10 @@ class World {
     }
 
 
+    /**
+     * This function flips the image of the character when he moves left
+     * @param {moveableObject} mo 
+     */
     flipImage(mo) {
         this.ctx.save();
         this.ctx.translate(mo.width, 0);
@@ -186,6 +268,10 @@ class World {
     }
 
 
+    /**
+     * This function flips the image of the character back when he move right again
+     * @param {moveableObject} mo 
+     */
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();

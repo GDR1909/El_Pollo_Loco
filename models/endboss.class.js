@@ -58,37 +58,57 @@ class Endboss extends MoveableObject {
     }
 
 
+    /**
+     * This function executes all the animation for the endboss
+     */
     animate() {
         setInterval(() => {
-            if (world.character.x > 2000 && !this.hadFirstContact) {
-                this.hadFirstContact = true;
-                console.log('first contact is:', this.hadFirstContact);
-            } else if (!this.isDead() && this.hadFirstContact) {
-                this.moveLeft();
-                this.speed = 3;
-            }
+            this.firstContactWithEndboss();
         }, 150);
 
         setInterval(() => {
-            if (this.isDead() && !this.endbossIsDead) {
-                this.deadEndboss();
-            } else if (this.isHurt() && !this.endbossIsDead) {
-                this.playAnimation(this.IMAGES_HURT);
-                // this.endbossHurt_sound.play();
-                playAudio(this.endbossHurt_sound);
-                this.speed = 0;
-            } else if (!this.endbossIsDead) {
-                this.playAnimation(this.IMAGES_WALKING);
-            }
+            this.playEndbossAnimations();
         }, 150);
     }
 
 
+    /**
+     * This function lets move the endboss left after he had a first contact with the character
+     */
+    firstContactWithEndboss() {
+        if (world.character.x > 2000 && !this.hadFirstContact) {
+            this.hadFirstContact = true;
+            console.log('first contact is:', this.hadFirstContact);
+        } else if (!this.isDead() && this.hadFirstContact) {
+            this.moveLeft();
+            this.speed = 3;
+        }
+    }
+
+
+    /**
+     * This function plays the animations for the endboss
+     */
+    playEndbossAnimations() {
+        if (this.isDead() && !this.endbossIsDead) {
+            this.deadEndboss();
+        } else if (this.isHurt() && !this.endbossIsDead) {
+            this.playAnimation(this.IMAGES_HURT);
+            playAudio(this.endbossHurt_sound);
+            this.speed = 0;
+        } else if (!this.endbossIsDead) {
+            this.playAnimation(this.IMAGES_WALKING);
+        }
+    }
+
+
+    /**
+     * This function plays the sound and the animation when the endboss ist dead and it executes another function
+     */
     deadEndboss() {
         this.endbossIsDead = true;
 
         setTimeout(() => {
-            // this.endbossDead_sound.play();
             playAudio(this.endbossDead_sound);
         }, 150);
 
@@ -101,9 +121,11 @@ class Endboss extends MoveableObject {
     }
 
 
+    /**
+     * This function shows the "Game Over" screen after the endboss died
+     */
     showGameOverScreen() {
         setTimeout(() => {
-            // this.win_sound.play();
             playAudio(this.win_sound);
             document.getElementById('gameOverScreen').classList.remove('d-none');
             document.getElementById('gameOverScreen').classList.add('gameOverScreen');

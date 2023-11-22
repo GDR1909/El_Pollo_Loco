@@ -32,18 +32,24 @@ class ThrowableObject extends MoveableObject {
     }
 
 
+    /**
+     * With this function the character throws bottles. It checks if the bottle hits the ground or an enemy and then it gets removed
+     */
     throw() {
         this.speedY = 30;
         this.applyGravity();
         setInterval(() => {
             this.x += 10;
-            if(this.y > 360 || this.hitted) {
+            if (this.y > 360 || this.hitted) {
                 this.removed = true;
             }
         }, 25);
     }
 
 
+    /**
+     * This function executes all the animations for the throwable object
+     */
     animate() {
         let bottleSplashSoundPlayed = false;
 
@@ -53,7 +59,6 @@ class ThrowableObject extends MoveableObject {
                 setTimeout(() => {
                     this.speedY = 0;
                     this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);
-                    // this.bottle_splash_sound.play();
                     playAudio(this.bottle_splash_sound);
                     bottleSplashSoundPlayed = true;
                     this.hitted = false;

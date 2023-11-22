@@ -101,13 +101,13 @@ class Character extends MoveableObject {
      */
     movingAnimations() {
         this.walking_sound.pause();
-        if (this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x) {
+        if (this.canMoveRight()) {
             this.moveRightAnimation();
         }
-        if (this.world.keyboard.LEFT && this.x > 0) {
+        if (this.canMoveLeft()) {
             this.moveLeftAnimation();
         }
-        if (this.world.keyboard.SPACE && !this.isAboveGround()) {
+        if (this.canJump()) {
             this.jumpAnimation();
         }
         this.world.camera_x = -this.x + 100;
@@ -136,7 +136,15 @@ class Character extends MoveableObject {
 
 
     /**
-     * This function lets the character move left
+     * This function returns the condition for the moving right animation
+     */
+    canMoveRight() {
+        return this.world.keyboard.RIGHT && this.x < this.world.level.level_end_x;
+    }
+
+
+    /**
+     * This function lets the character move right
      */
     moveRightAnimation() {
         this.moveRight();
@@ -146,12 +154,28 @@ class Character extends MoveableObject {
 
 
     /**
-     * This function lets the character move right
+     * This function returns the condition for the moving left animation
+     */
+    canMoveLeft() {
+        return this.world.keyboard.LEFT && this.x > 0;
+    }
+
+
+    /**
+     * This function lets the character move left
      */
     moveLeftAnimation() {
         this.moveLeft();
         this.otherDirection = true;
         playAudio(this.walking_sound);
+    }
+
+
+    /**
+     * This function returns the condition for the jumping animation
+     */
+    canJump() {
+        return this.world.keyboard.SPACE && !this.isAboveGround();
     }
 
 
@@ -215,7 +239,7 @@ class Character extends MoveableObject {
 
 
     /**
-     * This function shows the "You Lost" screen after the character dies
+     * This function shows the "You Lost" screen after the character died
      */
     showYouLostScreen() {
         document.getElementById('canvas').style.filter = 'grayscale(100%)';

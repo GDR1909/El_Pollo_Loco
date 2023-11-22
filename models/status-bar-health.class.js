@@ -21,14 +21,21 @@ class StatusBarHealth extends DrawableObject {
     }
 
 
-    //Bsp: setPercentage(50);
-    setPercentage(percentage) {
+    /**
+     * This function sets the percentage for the character's health satusbar
+     * @param {percentage} percentage 
+     */
+    setPercentage(percentage) { //Bsp: setPercentage(50);
         this.percentage = percentage; // => 0 ... 5
         let path = this.IMAGES_HEALTH[this.resolveImageIndex()];
         this.img = this.imageCache[path];
     }
 
 
+    /**
+     * This function displays the correct value for the statusbar
+     * @returns the position of the image in the array "IMAGES_HEALTH"
+     */
     resolveImageIndex() {
         if (this.percentage == 100) {
             return 5;
