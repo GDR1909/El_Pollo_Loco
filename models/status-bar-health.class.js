@@ -10,6 +10,9 @@ class StatusBarHealth extends DrawableObject {
     percentage = 100;
 
 
+    /**
+     * Constructor for a health statusbar object for the character
+     */
     constructor() {
         super();
         this.loadImages(this.IMAGES_HEALTH);

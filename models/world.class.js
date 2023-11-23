@@ -16,6 +16,11 @@ class World {
     collecting_bottle_sound = new Audio('audio/bottle.mp3');
 
 
+    /**
+     * Constructor for the World class
+     * @param {HTMLCanvasElement} canvas - The canvas element for rendering
+     * @param {Keyboard} keyboard - The keyboard input for the game
+     */
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;

@@ -11,6 +11,9 @@ class StatusBarBottle extends DrawableObject {
     bottleAmount = 0;
 
 
+    /**
+     * Constructor for a bottle statusbar object
+     */
     constructor() {
         super();
         this.loadImages(this.IMAGES_BOTTLE);

@@ -4,6 +4,10 @@ class Bottle extends MoveableObject {
     y = 380;
 
 
+    /**
+     * Constructor for a bottle object
+     * @param {string} imagePath - The path to the image of the bottle
+     */
     constructor(imagePath) {
         super().loadImage(imagePath);
         this.x = 200 + Math.random() * 2000;

@@ -10,6 +10,9 @@ class StatusBarEndboss extends DrawableObject {
     percentage = 100;
 
 
+    /**
+     * Constructor for a health statusbar for the endboss
+     */
     constructor() {
         super();
         this.loadImages(this.IMAGES_HEALTH_ENDBOSS);

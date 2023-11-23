@@ -19,6 +19,11 @@ class ThrowableObject extends MoveableObject {
     bottle_splash_sound = new Audio('audio/bottleSplash.mp3');
 
 
+    /**
+     * Constructor for a throwable object
+     * @param {number} x - The initial x-coordinate of the throwable object
+     * @param {number} y - The initial y-coordinate of the throwable object
+     */
     constructor(x, y) {
         super().loadImage('img/6_salsa_bottle/bottle_rotation/1_bottle_rotation.png');
         this.loadImages(this.IMAGES_FLYING_BOTTLE);
