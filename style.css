@@ -18,27 +18,24 @@ body {
 }
 
 .d-none {
-    display: none !important;
+    display: none;
 }
 
 .v-hidden {
-    visibility: hidden !important;
+    visibility: hidden;
 }
 
 .hintToRotateOverlay {
+    background-image: url('img/rotateDevice.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
     position: absolute;
+    height: 100vh;
     width: 100%;
-    height: 100%;
     display: none;
-    justify-content: center;
-    align-items: center;
     backdrop-filter: blur(7px);
     z-index: 100;
-}
-
-.hintToRotateOverlay img {
-    width: 100%;
-    height: 100%;
 }
 
 .startScreen {
@@ -73,11 +70,12 @@ body {
 
 .settingsAndStoryContainer {
     font-size: 36px;
-    width: 850px;
-    height: 480px;
+    width: 100%;
+    max-width: 850px;
+    height: 100%;
+    max-height: 480px;
     backdrop-filter: blur(8px);
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -105,11 +103,7 @@ body {
 }
 
 .settingsAndStoryContainer span {
-    padding: 10px 80px 10px 80px;
-}
-
-table {
-    border-collapse: collapse;
+    padding: 0px 70px 0px 70px;
 }
 
 table img {
@@ -228,6 +222,7 @@ canvas {
     justify-content: space-between;
     width: 100%;
     bottom: 10px;
+    visibility: hidden;
 }
 
 .touchControlls img {
@@ -284,22 +279,9 @@ canvas {
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 850px) {
     .hintToRotateOverlay {
-        display: flex;
-    }
-}
-
-@media screen and (orientation: portrait) {
-    .hintToRotateOverlay {
-        display: block;
-        width: 100%;
-    }
-}
-
-@media screen and (orientation: landscape) {
-    .hintToRotateOverlay {
-        display: none;
+        display: unset;
     }
 }
 
@@ -308,14 +290,6 @@ canvas {
     canvas {
         width: 100%;
     }
-
-    h1 {
-        display: none;
-    }
-
-    .touchControlls {
-        display: flex;
-    }
 }
 
 /* Smartphones ---------- */
@@ -323,12 +297,21 @@ canvas {
     canvas {
         height: 100vh;
     }
+}
 
-    h1 {
+/* Portrait */
+@media screen and (orientation: portrait) {
+    /* Portrait styles */
+}
+
+/* Landscape */
+@media screen and (orientation: landscape) {
+    /* Landscape styles */
+    .hintToRotateOverlay {
         display: none;
     }
 
-    .touchControlls {
-        display: flex;
+    h1 {
+        display: none;
     }
 }
