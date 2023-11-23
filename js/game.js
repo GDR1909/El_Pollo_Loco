@@ -22,7 +22,7 @@ function init() {
  * This function starts the game with background music beeing played and it executes two other functions
  */
 function start() {
-    music.play();
+    // music.play();
     initLevel();
     init();
     document.getElementById('startScreen').classList.remove('startScreen');

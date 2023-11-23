@@ -14,6 +14,7 @@ class World {
     ThrowableObjects = [];
     collecting_coin_sound = new Audio('audio/coin.mp3');
     collecting_bottle_sound = new Audio('audio/bottle.mp3');
+    bottleIsFlying = false;
 
 
     /**
@@ -169,7 +170,8 @@ class World {
     checkThrowObjects() {
         if (this.collectedBottles == 0) {
             this.keyboard.D = false;
-        } else if (this.keyboard.D) {
+        } else if (this.keyboard.D && !this.bottleIsFlying) {
+            this.checkBottleIsFlying();
             let bottle = new ThrowableObject(this.character.x + 100, this.character.y + 100);
             this.ThrowableObjects.push(bottle);
             this.collectedBottles.splice(0, 1);
@@ -177,6 +179,19 @@ class World {
             this.statusBarBottle.setPercentage(this.statusBarBottle.bottleAmount);
         }
         this.checkIfFlyingBottleHitsEnemy();
+    }
+
+
+    /**
+     * This function allows you to throw only one bottle per second
+     */
+    checkBottleIsFlying() {
+        this.bottleIsFlying = true;
+        console.log('the bottle is flying:', this.bottleIsFlying);
+        setTimeout(() => {
+            this.bottleIsFlying = false;
+            console.log('the bottle is flying:', this.bottleIsFlying);
+        }, 1000);
     }
 
 
