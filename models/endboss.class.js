@@ -135,7 +135,9 @@ class Endboss extends MoveableObject {
      */
     showGameOverScreen() {
         setTimeout(() => {
+            music.pause();
             playAudio(this.win_sound);
+            soundIsActive = false;
             document.getElementById('gameOverScreen').classList.remove('d-none');
             document.getElementById('gameOverScreen').classList.add('gameOverScreen');
         }, 2500);

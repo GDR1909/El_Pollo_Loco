@@ -255,7 +255,9 @@ class Character extends MoveableObject {
         document.getElementById('canvas').style.transition = 'filter 2s ease-in-out';
 
         setTimeout(() => {
+            music.pause();
             playAudio(this.lose_sound);
+            soundIsActive = false;
             document.getElementById('youLostScreen').classList.remove('d-none');
             document.getElementById('youLostScreen').classList.add('youLostScreen');
         }, 2500);
