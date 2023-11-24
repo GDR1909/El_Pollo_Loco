@@ -18,11 +18,11 @@ body {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 .v-hidden {
-    visibility: hidden;
+    visibility: hidden !important;
 }
 
 .hintToRotateOverlay {
@@ -281,10 +281,6 @@ canvas {
 @media (max-width: 850px) {
     .hintToRotateOverlay {
         display: unset;
-    }
-
-    .touchControlls {
-        display: flex;
     }
 }
 
