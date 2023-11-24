@@ -222,7 +222,6 @@ canvas {
     justify-content: space-between;
     width: 100%;
     bottom: 10px;
-    visibility: hidden;
 }
 
 .touchControlls img {
@@ -283,6 +282,10 @@ canvas {
     .hintToRotateOverlay {
         display: unset;
     }
+
+    .touchControlls {
+        display: flex;
+    }
 }
 
 /* Smartphones ---------- */
@@ -313,5 +316,9 @@ canvas {
 
     h1 {
         display: none;
+    }
+
+    .touchControlls {
+        display: flex;
     }
 }

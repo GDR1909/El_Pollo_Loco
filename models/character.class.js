@@ -68,6 +68,13 @@ class Character extends MoveableObject {
     hurting_sound = new Audio('audio/hurt.mp3');
     characterDead_sound = new Audio('audio/characterDead.mp3');
     lose_sound = new Audio('audio/failure.mp3');
+    
+    // offset = {
+    //     top: 275,
+    //     bottom: 15,
+    //     left: 80,
+    //     right: 20
+    // }
 
 
     /**
