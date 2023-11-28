@@ -22,7 +22,7 @@ body {
 }
 
 .v-hidden {
-    visibility: hidden !important;
+    visibility: hidden;
 }
 
 .hintToRotateOverlay {
@@ -278,12 +278,6 @@ canvas {
     }
 }
 
-@media (max-width: 850px) {
-    .hintToRotateOverlay {
-        display: unset;
-    }
-}
-
 /* Smartphones ---------- */
 @media only screen and (max-width: 720px) {
     canvas {
@@ -298,23 +292,18 @@ canvas {
     }
 }
 
-/* Portrait */
-@media screen and (orientation: portrait) {
-    /* Portrait styles */
+@media only screen and (max-width: 400px) {
+    h1 {
+        display: none;
+    }
 }
 
-/* Landscape */
-@media screen and (orientation: landscape) {
-    /* Landscape styles */
+@media only screen and (max-width: 850px) and (orientation: portrait) {
     .hintToRotateOverlay {
-        display: none;
+        display: block;
     }
 
     h1 {
         display: none;
-    }
-
-    .touchControlls {
-        display: flex;
     }
 }
