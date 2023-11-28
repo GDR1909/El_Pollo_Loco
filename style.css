@@ -291,19 +291,3 @@ canvas {
         height: 100vh;
     }
 }
-
-@media only screen and (max-width: 400px) {
-    h1 {
-        display: none;
-    }
-}
-
-@media only screen and (max-width: 850px) and (orientation: portrait) {
-    .hintToRotateOverlay {
-        display: block;
-    }
-
-    h1 {
-        display: none;
-    }
-}
