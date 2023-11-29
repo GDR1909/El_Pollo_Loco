@@ -115,7 +115,6 @@ class World {
      * @param {enemies} enemy 
      */
     enemyGetKilled(enemy) {
-        console.log(enemy, 'gets jumped on!');
         enemy.killChicken();
         this.chickenToDelete(enemy);
         this.character.smallJump();
@@ -187,10 +186,8 @@ class World {
      */
     checkBottleIsFlying() {
         this.bottleIsFlying = true;
-        console.log('the bottle is flying:', this.bottleIsFlying);
         setTimeout(() => {
             this.bottleIsFlying = false;
-            console.log('the bottle is flying:', this.bottleIsFlying);
         }, 1000);
     }
 
@@ -203,7 +200,6 @@ class World {
             this.level.enemies.forEach(enemy => {
                 if (bottle.isColliding(enemy)) {
                     bottle.hitted = true;
-                    console.log('Enemy hitted with flying bottle!');
                     this.updateThrowableObjects();
                     enemy.hit();
                     this.statusBarEndboss.setPercentage(enemy.energy);

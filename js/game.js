@@ -13,8 +13,7 @@ function init() {
     canvas = document.getElementById('canvas');
     world = new World(canvas, keyboard);
     mobileButtonsTouchEvent();
-
-    console.log('My Character is:', world.character);
+    // console.log('My Character is:', world.character);
 }
 
 
@@ -27,7 +26,6 @@ function start() {
     init();
     document.getElementById('startScreen').classList.remove('startScreen');
     document.getElementById('startScreen').classList.add('d-none');
-    // document.getElementById('h1').style = 'visibility: visible';
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('hudOverlay').classList.remove('d-none');
     document.getElementById('hudOverlay').classList.add('hudOverlay');
@@ -195,10 +193,8 @@ window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
     const portrait = e.matches;
 
     if (portrait) {
-        console.log('portrait');
         document.getElementById('hintToRotateOverlay').style = 'display: block';
     } else {
-        console.log('landscape');
         document.getElementById('hintToRotateOverlay').style = 'display: none';
     }
 });

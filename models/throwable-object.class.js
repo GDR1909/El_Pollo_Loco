@@ -60,7 +60,6 @@ class ThrowableObject extends MoveableObject {
 
         setInterval(() => {
             if ((this.y > 360 && !bottleSplashSoundPlayed) || this.hitted) {
-                console.log(this.hitted);
                 setTimeout(() => {
                     this.speedY = 0;
                     this.playAnimation(this.IMAGAES_BOTTLE_SPLASH);

@@ -87,7 +87,6 @@ class Endboss extends MoveableObject {
     firstContactWithEndboss() {
         if (world.character.x > 2000 && !this.hadFirstContact) {
             this.hadFirstContact = true;
-            console.log('first contact is:', this.hadFirstContact);
         } else if (!this.isDead() && this.hadFirstContact) {
             this.moveLeft();
             this.speed = 3;

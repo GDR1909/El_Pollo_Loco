@@ -3,37 +3,34 @@ class Keyboard {
     RIGHT = false;
     SPACE = false;
     D = false;
-    ESCAPE = false;
 }
 
 
 window.addEventListener("keydown", (e) => {
-    if (world.character.characterIsDead) {
-        keyboard.LEFT = false;
-    } else if (e.keyCode == 37) {
-        keyboard.LEFT = true;
-    }
+    if (world) {
+        if (world.character.characterIsDead) {
+            keyboard.LEFT = false;
+        } else if (e.keyCode == 37) {
+            keyboard.LEFT = true;
+        }
 
-    if (world.character.characterIsDead) {
-        keyboard.RIGHT = false;
-    } else if (e.keyCode == 39) {
-        keyboard.RIGHT = true;
-    }
+        if (world.character.characterIsDead) {
+            keyboard.RIGHT = false;
+        } else if (e.keyCode == 39) {
+            keyboard.RIGHT = true;
+        }
 
-    if (world.character.characterIsDead) {
-        keyboard.SPACE = false;
-    } else if (e.keyCode == 32) {
-        keyboard.SPACE = true;
-    }
+        if (world.character.characterIsDead) {
+            keyboard.SPACE = false;
+        } else if (e.keyCode == 32) {
+            keyboard.SPACE = true;
+        }
 
-    if (world.character.characterIsDead) {
-        keyboard.D = false;
-    } else if (e.keyCode == 68) {
-        keyboard.D = true;
-    }
-
-    if (e.keyCode == 27) {
-        keyboard.ESCAPE = true;
+        if (world.character.characterIsDead) {
+            keyboard.D = false;
+        } else if (e.keyCode == 68) {
+            keyboard.D = true;
+        }
     }
 })
 

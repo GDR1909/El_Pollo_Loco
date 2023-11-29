@@ -294,24 +294,6 @@ canvas {
     }
 }
 
-/* @media only screen and (max-width: 850px) {
-    .hintToRotateOverlay {
-        display: block;
-    }
-}
-
-@media only screen and (orientation: portrait) {
-    .hintToRotateOverlay {
-        display: block;
-    }
-}
-
-@media only screen and (orientation: landscape) {
-    .hintToRotateOverlay {
-        display: none;
-    }
-} */
-
 @media only screen and (max-width: 932px) and (orientation: landscape) {
     .touchControlls {
         z-index: 10;
