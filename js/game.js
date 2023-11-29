@@ -27,10 +27,12 @@ function start() {
     init();
     document.getElementById('startScreen').classList.remove('startScreen');
     document.getElementById('startScreen').classList.add('d-none');
-    document.getElementById('h1').classList.remove('v-hidden');
+    // document.getElementById('h1').style = 'visibility: visible';
     document.getElementById('canvas').classList.remove('d-none');
     document.getElementById('hudOverlay').classList.remove('d-none');
     document.getElementById('hudOverlay').classList.add('hudOverlay');
+    document.getElementById('touchControlls').classList.remove('d-none');
+    document.getElementById('touchControlls').classList.add('touchControlls');
 }
 
 
@@ -187,3 +189,16 @@ function exitFullscreen() {
         document.webkitExitFullscreen();
     }
 }
+
+
+window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
+    const portrait = e.matches;
+
+    if (portrait) {
+        console.log('portrait');
+        document.getElementById('hintToRotateOverlay').style = 'display: block';
+    } else {
+        console.log('landscape');
+        document.getElementById('hintToRotateOverlay').style = 'display: none';
+    }
+});
