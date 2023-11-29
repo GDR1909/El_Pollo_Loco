@@ -6,6 +6,11 @@ class Keyboard {
 }
 
 
+/**
+ * Event listener for the 'keydown' event.
+ * Updates the keyboard flags based on the pressed keys.
+ * @param {KeyboardEvent} e - The keyboard event object.
+ */
 window.addEventListener("keydown", (e) => {
     if (world) {
         if (world.character.characterIsDead) {
@@ -35,6 +40,11 @@ window.addEventListener("keydown", (e) => {
 })
 
 
+/**
+ * Event listener for the 'keyup' event.
+ * Updates the keyboard flags when keys are released.
+ * @param {KeyboardEvent} e - The keyboard event object.
+ */
 window.addEventListener("keyup", (e) => {
     if (e.keyCode == 37) {
         keyboard.LEFT = false;

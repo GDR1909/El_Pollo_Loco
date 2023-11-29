@@ -189,6 +189,11 @@ function exitFullscreen() {
 }
 
 
+/**
+ * Event listener for changes in device orientation.
+ * Displays or hides the hint to rotate overlay based on the orientation.
+ * @param {MediaQueryListEvent} e - The event containing the media query match information.
+ */
 window.matchMedia("(orientation: portrait)").addEventListener("change", e => {
     const portrait = e.matches;
 
